@@ -1,0 +1,185 @@
+{
+  "modelo": "Random Forest",
+  "colunas": [
+    "faixa_etaria_ord",
+    "media_permanencia",
+    "tx_mort_macro",
+    "tx_mort_melhor_hosp"
+  ],
+  "corte_alvo": 0.9,
+  "faixas_etarias": [
+    "Menor 1 ano",
+    "1 a 4 anos",
+    "5 a 9 anos",
+    "10 a 14 anos",
+    "15 a 19 anos",
+    "20 a 29 anos",
+    "30 a 39 anos",
+    "40 a 49 anos",
+    "50 a 59 anos",
+    "60 a 69 anos",
+    "70 a 79 anos",
+    "80 anos e mais"
+  ],
+  "doencas": [
+    "Algumas afec originadas no período perinatal",
+    "Algumas doenças infecciosas e parasitárias",
+    "Contatos com serviços de saúde",
+    "Doenças da pele e do tecido subcutâneo",
+    "Doenças do aparelho circulatório",
+    "Doenças do aparelho digestivo",
+    "Doenças do aparelho geniturinário",
+    "Doenças do aparelho respiratório",
+    "Doenças do olho e anexos",
+    "Doenças do ouvido e da apófise mastóide",
+    "Doenças do sistema nervoso",
+    "Doenças endócrinas nutricionais e metabólicas",
+    "Doenças sangue órgãos hemat e transt imunitár",
+    "Doenças sist osteomuscular e tec conjuntivo",
+    "Gravidez parto e puerpério",
+    "Lesões enven e alg out conseq causas externas",
+    "Malf cong deformid e anomalias cromossômicas",
+    "Neoplasias (tumores)",
+    "Sint sinais e achad anorm ex clín e laborat",
+    "Transtornos mentais e comportamentais"
+  ],
+  "medianas_contexto": {
+    "media_perm_macro": 4.575,
+    "tx_mort_macro": 1.7675,
+    "tx_mort_melhor_hosp": 2.41
+  },
+  "contexto_por_faixa": {
+    "1 a 4 anos": {
+      "media_perm_macro": 4.05,
+      "tx_mort_macro": 0.4775
+    },
+    "10 a 14 anos": {
+      "media_perm_macro": 3.275,
+      "tx_mort_macro": 0.47
+    },
+    "15 a 19 anos": {
+      "media_perm_macro": 3.05,
+      "tx_mort_macro": 0.4725
+    },
+    "20 a 29 anos": {
+      "media_perm_macro": 3.25,
+      "tx_mort_macro": 0.5225
+    },
+    "30 a 39 anos": {
+      "media_perm_macro": 3.7,
+      "tx_mort_macro": 1.095
+    },
+    "40 a 49 anos": {
+      "media_perm_macro": 4.575,
+      "tx_mort_macro": 2.525
+    },
+    "5 a 9 anos": {
+      "media_perm_macro": 3.125,
+      "tx_mort_macro": 0.4675
+    },
+    "50 a 59 anos": {
+      "media_perm_macro": 5.175,
+      "tx_mort_macro": 4.245
+    },
+    "60 a 69 anos": {
+      "media_perm_macro": 5.425,
+      "tx_mort_macro": 6.38
+    },
+    "70 a 79 anos": {
+      "media_perm_macro": 5.95,
+      "tx_mort_macro": 9.8575
+    },
+    "80 anos e mais": {
+      "media_perm_macro": 6.5,
+      "tx_mort_macro": 15.62
+    },
+    "Menor 1 ano": {
+      "media_perm_macro": 5.4,
+      "tx_mort_macro": 1.7675
+    }
+  },
+  "contexto_por_doenca": {
+    "Algumas afec originadas no período perinatal": {
+      "tx_mort_melhor_hosp": 1.06
+    },
+    "Algumas doenças infecciosas e parasitárias": {
+      "tx_mort_melhor_hosp": 9.97
+    },
+    "Contatos com serviços de saúde": {
+      "tx_mort_melhor_hosp": 0.21
+    },
+    "Doenças da pele e do tecido subcutâneo": {
+      "tx_mort_melhor_hosp": 0.37
+    },
+    "Doenças do aparelho circulatório": {
+      "tx_mort_melhor_hosp": 15.22
+    },
+    "Doenças do aparelho digestivo": {
+      "tx_mort_melhor_hosp": 6.3
+    },
+    "Doenças do aparelho geniturinário": {
+      "tx_mort_melhor_hosp": 2.41
+    },
+    "Doenças do aparelho respiratório": {
+      "tx_mort_melhor_hosp": 3.98
+    },
+    "Doenças do olho e anexos": {
+      "tx_mort_melhor_hosp": 0.0
+    },
+    "Doenças do ouvido e da apófise mastóide": {
+      "tx_mort_melhor_hosp": 0.0
+    },
+    "Doenças do sistema nervoso": {
+      "tx_mort_melhor_hosp": 4.36
+    },
+    "Doenças endócrinas nutricionais e metabólicas": {
+      "tx_mort_melhor_hosp": 0.39
+    },
+    "Doenças sangue órgãos hemat e transt imunitár": {
+      "tx_mort_melhor_hosp": 1.23
+    },
+    "Doenças sist osteomuscular e tec conjuntivo": {
+      "tx_mort_melhor_hosp": 0.06
+    },
+    "Gravidez parto e puerpério": {
+      "tx_mort_melhor_hosp": 0.05
+    },
+    "Lesões enven e alg out conseq causas externas": {
+      "tx_mort_melhor_hosp": 6.94
+    },
+    "Malf cong deformid e anomalias cromossômicas": {
+      "tx_mort_melhor_hosp": 3.74
+    },
+    "Neoplasias (tumores)": {
+      "tx_mort_melhor_hosp": 8.87
+    },
+    "Sint sinais e achad anorm ex clín e laborat": {
+      "tx_mort_melhor_hosp": 6.99
+    },
+    "Transtornos mentais e comportamentais": {
+      "tx_mort_melhor_hosp": 0.22
+    }
+  },
+  "hospital_por_doenca": {
+    "Algumas afec originadas no período perinatal": "HOSPITAL BARAO DE LUCENA",
+    "Algumas doenças infecciosas e parasitárias": "HOSPITAL BARAO DE LUCENA",
+    "Contatos com serviços de saúde": "IMIP",
+    "Doenças da pele e do tecido subcutâneo": "US 111 HOSPITAL EDUARDO CAMPOS DA PESSOA IDOSA DO RECIFE",
+    "Doenças do aparelho circulatório": "HOSPITAL DA RESTAURACAO",
+    "Doenças do aparelho digestivo": "HOSPITAL OTAVIO DE FREITAS",
+    "Doenças do aparelho geniturinário": "HOSPITAL OTAVIO DE FREITAS",
+    "Doenças do aparelho respiratório": "HOSPITAL MARIA LUCINDA",
+    "Doenças do olho e anexos": "FUNDACAO ALTINO VENTURA",
+    "Doenças do ouvido e da apófise mastóide": "HOSPITAL AGAMENON MAGALHAES",
+    "Doenças do sistema nervoso": "HOSPITAL DA RESTAURACAO",
+    "Doenças endócrinas nutricionais e metabólicas": "IMIP",
+    "Doenças sangue órgãos hemat e transt imunitár": "FUNDACAO HEMOPE",
+    "Doenças sist osteomuscular e tec conjuntivo": "HOSPITAL DAS CLINICAS",
+    "Gravidez parto e puerpério": "IMIP",
+    "Lesões enven e alg out conseq causas externas": "HOSPITAL DA RESTAURACAO",
+    "Malf cong deformid e anomalias cromossômicas": "IMIP",
+    "Neoplasias (tumores)": "HOSPITAL DE CANCER DE PERNAMBUCO",
+    "Sint sinais e achad anorm ex clín e laborat": "HOSPITAL OTAVIO DE FREITAS",
+    "Transtornos mentais e comportamentais": "HOSPITAL PSIQUIATRICO ULYSSES PERNAMBUCANO"
+  }
+}

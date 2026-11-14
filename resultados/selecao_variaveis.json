@@ -1,0 +1,96 @@
+{
+  "criterios": {
+    "info_mutua": "mutual_info_classif; limiar = 50% da média (0.0761)",
+    "spearman": "|rho| com o alvo >= 0.1",
+    "permutacao": "queda média de AUROC ao embaralhar a variável (30 repetições); limiar = 50% da média (0.0103)",
+    "regra": "entra quem passa em pelo menos 2 dos 3 critérios; entre colineares (|rho|>0,85) fica a de maior importância"
+  },
+  "tabela": [
+    {
+      "variavel": "tx_mort_melhor_hosp",
+      "info_mutua": 0.184,
+      "spearman_abs": 0.5676,
+      "importancia_permutacao": 0.0806,
+      "votos": 3,
+      "selecionada": true
+    },
+    {
+      "variavel": "media_permanencia",
+      "info_mutua": 0.2179,
+      "spearman_abs": 0.576,
+      "importancia_permutacao": 0.0408,
+      "votos": 3,
+      "selecionada": true
+    },
+    {
+      "variavel": "tx_mort_macro",
+      "info_mutua": 0.1104,
+      "spearman_abs": 0.537,
+      "importancia_permutacao": 0.0078,
+      "votos": 2,
+      "selecionada": true
+    },
+    {
+      "variavel": "faixa_etaria_ord",
+      "info_mutua": 0.1834,
+      "spearman_abs": 0.4233,
+      "importancia_permutacao": 0.007,
+      "votos": 2,
+      "selecionada": true
+    },
+    {
+      "variavel": "media_perm_macro",
+      "info_mutua": 0.1232,
+      "spearman_abs": 0.4619,
+      "importancia_permutacao": 0.0045,
+      "votos": 2,
+      "selecionada": false,
+      "motivo_extra": "colinear com tx_mort_macro (rho=0.916)"
+    },
+    {
+      "variavel": "doenca_cod",
+      "info_mutua": 0.2268,
+      "spearman_abs": 0.0547,
+      "importancia_permutacao": 0.0019,
+      "votos": 1,
+      "selecionada": false
+    },
+    {
+      "variavel": "log_internacoes",
+      "info_mutua": 0.0198,
+      "spearman_abs": 0.2864,
+      "importancia_permutacao": 0.0019,
+      "votos": 1,
+      "selecionada": false
+    }
+  ],
+  "pares_colineares": [
+    {
+      "a": "media_perm_macro",
+      "b": "tx_mort_macro",
+      "rho": 0.916
+    }
+  ],
+  "selecionadas": [
+    "tx_mort_melhor_hosp",
+    "media_permanencia",
+    "tx_mort_macro",
+    "faixa_etaria_ord"
+  ],
+  "descartadas": [
+    "media_perm_macro",
+    "doenca_cod",
+    "log_internacoes"
+  ],
+  "justificativas": {
+    "melhor_hospital": "Descartada antes da análise: é um nome (texto livre) com 1 valor por capítulo CID, o que a torna redundante com doenca_cid e sem poder de generalização.",
+    "tx_mortalidade": "Descartada: é a origem da variável-alvo. Usá-la seria vazamento de informação.",
+    "tx_mort_melhor_hosp": "Selecionada com 3/3 critérios: IM=0.184, |rho|=0.5676, importância=0.0806.",
+    "media_permanencia": "Selecionada com 3/3 critérios: IM=0.2179, |rho|=0.576, importância=0.0408.",
+    "tx_mort_macro": "Selecionada com 2/3 critérios: IM=0.1104, |rho|=0.537, importância=0.0078.",
+    "faixa_etaria_ord": "Selecionada com 2/3 critérios: IM=0.1834, |rho|=0.4233, importância=0.007.",
+    "media_perm_macro": "Descartada por colinearidade: colinear com tx_mort_macro (rho=0.916). Carrega a mesma informação (ambas derivam da faixa etária) e tinha menor importância.",
+    "doenca_cod": "Descartada: passou em apenas 1/3 critérios (IM=0.2268, |rho|=0.0547, importância=0.0019).",
+    "log_internacoes": "Descartada: passou em apenas 1/3 critérios (IM=0.0198, |rho|=0.2864, importância=0.0019)."
+  }
+}

@@ -1,0 +1,2752 @@
+{
+ "resumo": {
+  "registros": 239,
+  "atributos": 10,
+  "ausentes_por_coluna": {
+   "doenca_cid": 0,
+   "faixa_etaria": 0,
+   "internacoes": 0,
+   "media_permanencia": 0,
+   "tx_mortalidade": 0,
+   "media_perm_macro": 0,
+   "tx_mort_macro": 0,
+   "melhor_hospital": 0,
+   "tx_mort_melhor_hosp": 0,
+   "alto_risco": 0
+  },
+  "duplicados": 0,
+  "descritivas": {
+   "internacoes": {
+    "count": 239.0,
+    "mean": 3017.0,
+    "std": 5281.3218,
+    "min": 1.0,
+    "25%": 382.0,
+    "50%": 1246.0,
+    "75%": 3177.5,
+    "max": 55601.0,
+    "cv": 1.7505,
+    "assimetria": 5.3146
+   },
+   "media_permanencia": {
+    "count": 239.0,
+    "mean": 4.8435,
+    "std": 2.8195,
+    "min": 0.1,
+    "25%": 3.0,
+    "50%": 4.3,
+    "75%": 6.3,
+    "max": 16.0,
+    "cv": 0.5821,
+    "assimetria": 1.056
+   },
+   "media_perm_macro": {
+    "count": 239.0,
+    "mean": 4.4618,
+    "std": 1.1601,
+    "min": 3.05,
+    "25%": 3.275,
+    "50%": 4.575,
+    "75%": 5.4125,
+    "max": 6.5,
+    "cv": 0.26,
+    "assimetria": 0.2605
+   },
+   "tx_mort_macro": {
+    "count": 239.0,
+    "mean": 3.6717,
+    "std": 4.5893,
+    "min": 0.4675,
+    "25%": 0.4775,
+    "50%": 1.7675,
+    "75%": 5.3125,
+    "max": 15.62,
+    "cv": 1.2499,
+    "assimetria": 1.5574
+   },
+   "tx_mort_melhor_hosp": {
+    "count": 239.0,
+    "mean": 3.6334,
+    "std": 4.1475,
+    "min": 0.0,
+    "25%": 0.22,
+    "50%": 2.41,
+    "75%": 6.62,
+    "max": 15.22,
+    "cv": 1.1415,
+    "assimetria": 1.1984
+   },
+   "tx_mortalidade": {
+    "count": 239.0,
+    "mean": 2.9289,
+    "std": 5.4053,
+    "min": 0.0,
+    "25%": 0.06,
+    "50%": 0.9,
+    "75%": 3.155,
+    "max": 40.49,
+    "cv": 1.8455,
+    "assimetria": 3.6563
+   }
+  },
+  "distribuicao_alvo": {
+   "Baixo risco": 120,
+   "Alto risco": 119
+  },
+  "categorias": {
+   "doenca_cid": 20,
+   "faixa_etaria": 12,
+   "melhor_hospital": 12
+  }
+ },
+ "outliers": {
+  "internacoes": {
+   "quantidade": 26,
+   "percentual": 10.88,
+   "limite_inferior": -3811.25,
+   "limite_superior": 7370.75,
+   "maximo": 55601.0
+  },
+  "media_permanencia": {
+   "quantidade": 7,
+   "percentual": 2.93,
+   "limite_inferior": -1.95,
+   "limite_superior": 11.25,
+   "maximo": 16.0
+  },
+  "media_perm_macro": {
+   "quantidade": 0,
+   "percentual": 0.0,
+   "limite_inferior": 0.069,
+   "limite_superior": 8.619,
+   "maximo": 6.5
+  },
+  "tx_mort_macro": {
+   "quantidade": 20,
+   "percentual": 8.37,
+   "limite_inferior": -6.775,
+   "limite_superior": 12.565,
+   "maximo": 15.62
+  },
+  "tx_mort_melhor_hosp": {
+   "quantidade": 0,
+   "percentual": 0.0,
+   "limite_inferior": -9.38,
+   "limite_superior": 16.22,
+   "maximo": 15.22
+  },
+  "tx_mortalidade": {
+   "quantidade": 25,
+   "percentual": 10.46,
+   "limite_inferior": -4.583,
+   "limite_superior": 7.798,
+   "maximo": 40.49
+  }
+ },
+ "series": {
+  "alto_risco_por_faixa": {
+   "labels": [
+    "Menor 1 ano",
+    "1 a 4 anos",
+    "5 a 9 anos",
+    "10 a 14 anos",
+    "15 a 19 anos",
+    "20 a 29 anos",
+    "30 a 39 anos",
+    "40 a 49 anos",
+    "50 a 59 anos",
+    "60 a 69 anos",
+    "70 a 79 anos",
+    "80 anos e mais"
+   ],
+   "proporcao": [
+    0.65,
+    0.2,
+    0.105,
+    0.15,
+    0.35,
+    0.35,
+    0.5,
+    0.55,
+    0.65,
+    0.75,
+    0.85,
+    0.85
+   ],
+   "n": [
+    20,
+    20,
+    19,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20
+   ]
+  },
+  "alto_risco_por_doenca": {
+   "labels": [
+    "Algumas doenças infecciosas e parasitárias",
+    "Doenças do aparelho circulatório",
+    "Neoplasias (tumores)",
+    "Doenças do sistema nervoso",
+    "Lesões enven e alg out conseq causas externas",
+    "Sint sinais e achad anorm ex clín e laborat",
+    "Doenças do aparelho respiratório",
+    "Doenças endócrinas nutricionais e metabólicas",
+    "Doenças sangue órgãos hemat e transt imunitár",
+    "Doenças do aparelho digestivo",
+    "Algumas afec originadas no período perinatal",
+    "Doenças do aparelho geniturinário",
+    "Malf cong deformid e anomalias cromossômicas",
+    "Doenças da pele e do tecido subcutâneo",
+    "Transtornos mentais e comportamentais",
+    "Gravidez parto e puerpério",
+    "Contatos com serviços de saúde",
+    "Doenças sist osteomuscular e tec conjuntivo",
+    "Doenças do olho e anexos",
+    "Doenças do ouvido e da apófise mastóide"
+   ],
+   "proporcao": [
+    1.0,
+    1.0,
+    0.917,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.583,
+    0.583,
+    0.583,
+    0.5,
+    0.417,
+    0.333,
+    0.25,
+    0.25,
+    0.182,
+    0.167,
+    0.167,
+    0.0,
+    0.0
+   ],
+   "n": [
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    11,
+    12,
+    12,
+    12,
+    12
+   ]
+  },
+  "mortalidade_media_por_faixa": {
+   "labels": [
+    "Menor 1 ano",
+    "1 a 4 anos",
+    "5 a 9 anos",
+    "10 a 14 anos",
+    "15 a 19 anos",
+    "20 a 29 anos",
+    "30 a 39 anos",
+    "40 a 49 anos",
+    "50 a 59 anos",
+    "60 a 69 anos",
+    "70 a 79 anos",
+    "80 anos e mais"
+   ],
+   "valores": [
+    1.83,
+    0.59,
+    0.34,
+    0.38,
+    0.71,
+    1.07,
+    1.66,
+    2.21,
+    3.32,
+    4.6,
+    6.54,
+    11.76
+   ]
+  },
+  "boxplots": {
+   "internacoes": {
+    "Baixo risco": {
+     "min": 1.0,
+     "q1": 200.75,
+     "mediana": 628.0,
+     "q3": 1972.5,
+     "max": 55601.0,
+     "media": 2126.9083333333333
+    },
+    "Alto risco": {
+     "min": 3.0,
+     "q1": 784.5,
+     "mediana": 1982.0,
+     "q3": 6025.0,
+     "max": 22270.0,
+     "media": 3914.5714285714284
+    }
+   },
+   "media_permanencia": {
+    "Baixo risco": {
+     "min": 0.1,
+     "q1": 2.3,
+     "mediana": 3.2,
+     "q3": 4.2,
+     "max": 16.0,
+     "media": 3.5866666666666664
+    },
+    "Alto risco": {
+     "min": 1.6,
+     "q1": 4.4,
+     "mediana": 5.9,
+     "q3": 7.3,
+     "max": 12.8,
+     "media": 6.110924369747898
+    }
+   },
+   "media_perm_macro": {
+    "Baixo risco": {
+     "min": 3.05,
+     "q1": 3.21875,
+     "mediana": 3.4875,
+     "q3": 4.575,
+     "max": 6.5,
+     "media": 3.9347916666666665
+    },
+    "Alto risco": {
+     "min": 3.05,
+     "q1": 4.05,
+     "mediana": 5.4,
+     "q3": 5.95,
+     "max": 6.5,
+     "media": 4.993277310924369
+    }
+   },
+   "tx_mort_macro": {
+    "Baixo risco": {
+     "min": 0.4675,
+     "q1": 0.47,
+     "mediana": 0.4775,
+     "q3": 1.7675,
+     "max": 15.62,
+     "media": 1.8383958333333335
+    },
+    "Alto risco": {
+     "min": 0.4675,
+     "q1": 1.095,
+     "mediana": 4.245,
+     "q3": 9.8575,
+     "max": 15.62,
+     "media": 5.520378151260503
+    }
+   },
+   "tx_mort_melhor_hosp": {
+    "Baixo risco": {
+     "min": 0.0,
+     "q1": 0.05,
+     "mediana": 0.22,
+     "q3": 2.41,
+     "max": 8.87,
+     "media": 1.4740833333333334
+    },
+    "Alto risco": {
+     "min": 0.05,
+     "q1": 1.23,
+     "mediana": 6.3,
+     "q3": 8.87,
+     "max": 15.22,
+     "media": 5.810924369747899
+    }
+   }
+  },
+  "dispersao": [
+   {
+    "x": 22270.0,
+    "y": 6.6,
+    "classe": 1,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 102.0,
+    "y": 4.5,
+    "classe": 1,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 52.0,
+    "y": 4.0,
+    "classe": 0,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 40.0,
+    "y": 2.7,
+    "classe": 0,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 108.0,
+    "y": 2.6,
+    "classe": 0,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 396.0,
+    "y": 3.0,
+    "classe": 0,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 451.0,
+    "y": 3.2,
+    "classe": 0,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 729.0,
+    "y": 2.8,
+    "classe": 0,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 683.0,
+    "y": 3.1,
+    "classe": 1,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 627.0,
+    "y": 3.3,
+    "classe": 1,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 425.0,
+    "y": 3.0,
+    "classe": 1,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 179.0,
+    "y": 3.2,
+    "classe": 1,
+    "doenca": "Algumas afec originadas no período perinatal",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 4084.0,
+    "y": 9.7,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 2897.0,
+    "y": 6.0,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 1851.0,
+    "y": 5.9,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 1310.0,
+    "y": 6.3,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 1027.0,
+    "y": 6.9,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 2948.0,
+    "y": 9.0,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 3511.0,
+    "y": 9.6,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 4711.0,
+    "y": 9.9,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 5553.0,
+    "y": 10.2,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 6412.0,
+    "y": 10.1,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 5899.0,
+    "y": 9.9,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 4715.0,
+    "y": 8.4,
+    "classe": 1,
+    "doenca": "Algumas doenças infecciosas e parasitárias",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 1485.0,
+    "y": 1.4,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 468.0,
+    "y": 1.1,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 618.0,
+    "y": 0.8,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 522.0,
+    "y": 1.2,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 680.0,
+    "y": 1.8,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 7318.0,
+    "y": 1.8,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 8727.0,
+    "y": 1.6,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 3872.0,
+    "y": 1.3,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 2019.0,
+    "y": 1.3,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 1992.0,
+    "y": 1.3,
+    "classe": 0,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 1256.0,
+    "y": 1.6,
+    "classe": 1,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 452.0,
+    "y": 2.6,
+    "classe": 1,
+    "doenca": "Contatos com serviços de saúde",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 326.0,
+    "y": 4.8,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 905.0,
+    "y": 4.8,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 806.0,
+    "y": 4.3,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 792.0,
+    "y": 3.9,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 698.0,
+    "y": 3.0,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 1816.0,
+    "y": 3.4,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 2525.0,
+    "y": 3.2,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 4139.0,
+    "y": 3.1,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 5939.0,
+    "y": 3.4,
+    "classe": 0,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 6187.0,
+    "y": 3.5,
+    "classe": 1,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 4249.0,
+    "y": 4.2,
+    "classe": 1,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 2142.0,
+    "y": 5.1,
+    "classe": 1,
+    "doenca": "Doenças da pele e do tecido subcutâneo",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 341.0,
+    "y": 9.7,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 345.0,
+    "y": 6.4,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 261.0,
+    "y": 5.6,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 238.0,
+    "y": 6.7,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 559.0,
+    "y": 6.2,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 2027.0,
+    "y": 5.8,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 3444.0,
+    "y": 6.1,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 6757.0,
+    "y": 6.6,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 12243.0,
+    "y": 7.3,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 16383.0,
+    "y": 7.6,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 14652.0,
+    "y": 7.8,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 9199.0,
+    "y": 7.3,
+    "classe": 1,
+    "doenca": "Doenças do aparelho circulatório",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 689.0,
+    "y": 5.3,
+    "classe": 1,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 1901.0,
+    "y": 2.5,
+    "classe": 0,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 2754.0,
+    "y": 2.5,
+    "classe": 0,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 2249.0,
+    "y": 2.9,
+    "classe": 0,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 2091.0,
+    "y": 2.5,
+    "classe": 0,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 6804.0,
+    "y": 2.6,
+    "classe": 0,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 9496.0,
+    "y": 2.8,
+    "classe": 1,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 11115.0,
+    "y": 3.1,
+    "classe": 1,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 11560.0,
+    "y": 3.4,
+    "classe": 1,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 9977.0,
+    "y": 3.7,
+    "classe": 1,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 5943.0,
+    "y": 4.7,
+    "classe": 1,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 2570.0,
+    "y": 5.8,
+    "classe": 1,
+    "doenca": "Doenças do aparelho digestivo",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 553.0,
+    "y": 5.5,
+    "classe": 0,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 1659.0,
+    "y": 3.4,
+    "classe": 0,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 1912.0,
+    "y": 2.4,
+    "classe": 0,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 1443.0,
+    "y": 2.8,
+    "classe": 0,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 1748.0,
+    "y": 3.3,
+    "classe": 0,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 4552.0,
+    "y": 3.6,
+    "classe": 0,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 5609.0,
+    "y": 3.8,
+    "classe": 0,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 6817.0,
+    "y": 4.3,
+    "classe": 1,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 6439.0,
+    "y": 5.6,
+    "classe": 1,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 6873.0,
+    "y": 6.4,
+    "classe": 1,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 6424.0,
+    "y": 6.8,
+    "classe": 1,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 5240.0,
+    "y": 7.0,
+    "classe": 1,
+    "doenca": "Doenças do aparelho geniturinário",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 9827.0,
+    "y": 5.6,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 10411.0,
+    "y": 4.7,
+    "classe": 0,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 5146.0,
+    "y": 4.0,
+    "classe": 0,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 2120.0,
+    "y": 4.3,
+    "classe": 0,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 864.0,
+    "y": 5.6,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 1894.0,
+    "y": 6.7,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 1982.0,
+    "y": 7.3,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 2878.0,
+    "y": 8.1,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 4070.0,
+    "y": 8.5,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 6107.0,
+    "y": 8.8,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 7866.0,
+    "y": 8.3,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 10117.0,
+    "y": 7.7,
+    "classe": 1,
+    "doenca": "Doenças do aparelho respiratório",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 22.0,
+    "y": 1.3,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 58.0,
+    "y": 0.6,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 118.0,
+    "y": 0.4,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 135.0,
+    "y": 0.3,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 177.0,
+    "y": 0.2,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 307.0,
+    "y": 0.2,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 288.0,
+    "y": 0.2,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 588.0,
+    "y": 0.1,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 1160.0,
+    "y": 0.1,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 1616.0,
+    "y": 0.1,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 1219.0,
+    "y": 0.1,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 373.0,
+    "y": 0.1,
+    "classe": 0,
+    "doenca": "Doenças do olho e anexos",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 128.0,
+    "y": 4.7,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 305.0,
+    "y": 4.8,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 138.0,
+    "y": 4.5,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 73.0,
+    "y": 3.3,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 36.0,
+    "y": 2.4,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 79.0,
+    "y": 2.2,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 100.0,
+    "y": 2.3,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 97.0,
+    "y": 2.3,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 86.0,
+    "y": 2.8,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 70.0,
+    "y": 5.1,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 21.0,
+    "y": 3.8,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 10.0,
+    "y": 3.8,
+    "classe": 0,
+    "doenca": "Doenças do ouvido e da apófise mastóide",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 517.0,
+    "y": 9.4,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 785.0,
+    "y": 7.6,
+    "classe": 0,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 524.0,
+    "y": 5.9,
+    "classe": 0,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 518.0,
+    "y": 7.6,
+    "classe": 0,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 508.0,
+    "y": 6.5,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 1255.0,
+    "y": 5.6,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 1541.0,
+    "y": 6.4,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 2141.0,
+    "y": 6.0,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 2694.0,
+    "y": 7.4,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 2216.0,
+    "y": 7.9,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 1735.0,
+    "y": 9.5,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 1278.0,
+    "y": 10.9,
+    "classe": 1,
+    "doenca": "Doenças do sistema nervoso",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 217.0,
+    "y": 12.1,
+    "classe": 1,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 352.0,
+    "y": 5.1,
+    "classe": 0,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 594.0,
+    "y": 1.9,
+    "classe": 0,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 884.0,
+    "y": 2.2,
+    "classe": 0,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 601.0,
+    "y": 3.2,
+    "classe": 0,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 944.0,
+    "y": 3.4,
+    "classe": 0,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 1096.0,
+    "y": 4.3,
+    "classe": 1,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 1335.0,
+    "y": 4.8,
+    "classe": 1,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 1714.0,
+    "y": 5.3,
+    "classe": 1,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 1800.0,
+    "y": 5.7,
+    "classe": 1,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 1595.0,
+    "y": 6.3,
+    "classe": 1,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 1192.0,
+    "y": 6.1,
+    "classe": 1,
+    "doenca": "Doenças endócrinas nutricionais e metabólicas",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 183.0,
+    "y": 9.5,
+    "classe": 1,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 303.0,
+    "y": 5.4,
+    "classe": 0,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 358.0,
+    "y": 4.0,
+    "classe": 0,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 350.0,
+    "y": 4.5,
+    "classe": 0,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 445.0,
+    "y": 4.2,
+    "classe": 0,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 1003.0,
+    "y": 3.9,
+    "classe": 0,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 1015.0,
+    "y": 4.8,
+    "classe": 1,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 1220.0,
+    "y": 4.5,
+    "classe": 1,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 846.0,
+    "y": 6.5,
+    "classe": 1,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 796.0,
+    "y": 6.4,
+    "classe": 1,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 686.0,
+    "y": 6.9,
+    "classe": 1,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 556.0,
+    "y": 6.2,
+    "classe": 1,
+    "doenca": "Doenças sangue órgãos hemat e transt imunitár",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 18.0,
+    "y": 7.3,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 208.0,
+    "y": 3.7,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 560.0,
+    "y": 3.2,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 736.0,
+    "y": 3.4,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 931.0,
+    "y": 2.7,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 1684.0,
+    "y": 4.1,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 2049.0,
+    "y": 4.2,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 2763.0,
+    "y": 3.8,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 3114.0,
+    "y": 3.6,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 2440.0,
+    "y": 4.0,
+    "classe": 0,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 1246.0,
+    "y": 6.0,
+    "classe": 1,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 391.0,
+    "y": 7.1,
+    "classe": 1,
+    "doenca": "Doenças sist osteomuscular e tec conjuntivo",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 21.0,
+    "y": 5.8,
+    "classe": 1,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 6.0,
+    "y": 8.3,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 781.0,
+    "y": 2.6,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 15935.0,
+    "y": 2.6,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 55601.0,
+    "y": 2.6,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 28420.0,
+    "y": 2.9,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 3778.0,
+    "y": 2.9,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 35.0,
+    "y": 1.9,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 7.0,
+    "y": 2.0,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 4.0,
+    "y": 10.3,
+    "classe": 0,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 3.0,
+    "y": 8.3,
+    "classe": 1,
+    "doenca": "Gravidez parto e puerpério",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 353.0,
+    "y": 3.5,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 1966.0,
+    "y": 2.9,
+    "classe": 0,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 2629.0,
+    "y": 2.8,
+    "classe": 0,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 3241.0,
+    "y": 3.3,
+    "classe": 0,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 4923.0,
+    "y": 4.0,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 15639.0,
+    "y": 4.6,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 14488.0,
+    "y": 4.9,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 13226.0,
+    "y": 5.3,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 10776.0,
+    "y": 6.2,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 8439.0,
+    "y": 6.1,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 6420.0,
+    "y": 6.3,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 4442.0,
+    "y": 6.8,
+    "classe": 1,
+    "doenca": "Lesões enven e alg out conseq causas externas",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 1902.0,
+    "y": 7.8,
+    "classe": 1,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 1226.0,
+    "y": 3.9,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 758.0,
+    "y": 2.7,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 460.0,
+    "y": 2.9,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 212.0,
+    "y": 3.4,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 292.0,
+    "y": 3.3,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 249.0,
+    "y": 3.6,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 177.0,
+    "y": 4.6,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 174.0,
+    "y": 3.7,
+    "classe": 1,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 110.0,
+    "y": 3.5,
+    "classe": 1,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 56.0,
+    "y": 3.8,
+    "classe": 1,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 17.0,
+    "y": 7.3,
+    "classe": 0,
+    "doenca": "Malf cong deformid e anomalias cromossômicas",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 157.0,
+    "y": 5.1,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 1142.0,
+    "y": 4.6,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 1259.0,
+    "y": 4.4,
+    "classe": 0,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 1219.0,
+    "y": 4.2,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 1596.0,
+    "y": 4.1,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 2317.0,
+    "y": 4.1,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 5159.0,
+    "y": 3.9,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 10691.0,
+    "y": 3.8,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 10816.0,
+    "y": 4.4,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 12283.0,
+    "y": 4.7,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 8694.0,
+    "y": 4.5,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 3404.0,
+    "y": 4.1,
+    "classe": 1,
+    "doenca": "Neoplasias (tumores)",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 781.0,
+    "y": 2.2,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 581.0,
+    "y": 2.3,
+    "classe": 0,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 516.0,
+    "y": 2.3,
+    "classe": 0,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 453.0,
+    "y": 2.8,
+    "classe": 0,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 698.0,
+    "y": 3.1,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 1803.0,
+    "y": 3.5,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 1860.0,
+    "y": 3.8,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 2456.0,
+    "y": 4.4,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 2949.0,
+    "y": 4.9,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 2915.0,
+    "y": 5.6,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 2473.0,
+    "y": 5.8,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 1892.0,
+    "y": 5.7,
+    "classe": 1,
+    "doenca": "Sint sinais e achad anorm ex clín e laborat",
+    "faixa": "80 anos e mais"
+   },
+   {
+    "x": 1.0,
+    "y": 5.0,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "Menor 1 ano"
+   },
+   {
+    "x": 14.0,
+    "y": 3.3,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "1 a 4 anos"
+   },
+   {
+    "x": 31.0,
+    "y": 0.8,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "5 a 9 anos"
+   },
+   {
+    "x": 179.0,
+    "y": 5.7,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "10 a 14 anos"
+   },
+   {
+    "x": 638.0,
+    "y": 7.8,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "15 a 19 anos"
+   },
+   {
+    "x": 2137.0,
+    "y": 13.0,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "20 a 29 anos"
+   },
+   {
+    "x": 2361.0,
+    "y": 13.3,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "30 a 39 anos"
+   },
+   {
+    "x": 2108.0,
+    "y": 16.0,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "40 a 49 anos"
+   },
+   {
+    "x": 1414.0,
+    "y": 15.7,
+    "classe": 0,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "50 a 59 anos"
+   },
+   {
+    "x": 788.0,
+    "y": 12.8,
+    "classe": 1,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "60 a 69 anos"
+   },
+   {
+    "x": 202.0,
+    "y": 12.8,
+    "classe": 1,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "70 a 79 anos"
+   },
+   {
+    "x": 107.0,
+    "y": 11.2,
+    "classe": 1,
+    "doenca": "Transtornos mentais e comportamentais",
+    "faixa": "80 anos e mais"
+   }
+  ],
+  "heatmap_mortalidade": {
+   "linhas": [
+    "Algumas afec originadas no período perinatal",
+    "Algumas doenças infecciosas e parasitárias",
+    "Contatos com serviços de saúde",
+    "Doenças da pele e do tecido subcutâneo",
+    "Doenças do aparelho circulatório",
+    "Doenças do aparelho digestivo",
+    "Doenças do aparelho geniturinário",
+    "Doenças do aparelho respiratório",
+    "Doenças do olho e anexos",
+    "Doenças do ouvido e da apófise mastóide",
+    "Doenças do sistema nervoso",
+    "Doenças endócrinas nutricionais e metabólicas",
+    "Doenças sangue órgãos hemat e transt imunitár",
+    "Doenças sist osteomuscular e tec conjuntivo",
+    "Gravidez parto e puerpério",
+    "Lesões enven e alg out conseq causas externas",
+    "Malf cong deformid e anomalias cromossômicas",
+    "Neoplasias (tumores)",
+    "Sint sinais e achad anorm ex clín e laborat",
+    "Transtornos mentais e comportamentais"
+   ],
+   "colunas": [
+    "Menor 1 ano",
+    "1 a 4 anos",
+    "5 a 9 anos",
+    "10 a 14 anos",
+    "15 a 19 anos",
+    "20 a 29 anos",
+    "30 a 39 anos",
+    "40 a 49 anos",
+    "50 a 59 anos",
+    "60 a 69 anos",
+    "70 a 79 anos",
+    "80 anos e mais"
+   ],
+   "valores": [
+    [
+     1.91,
+     1.96,
+     0.0,
+     0.0,
+     0.0,
+     0.25,
+     0.0,
+     0.82,
+     1.17,
+     2.39,
+     0.94,
+     1.12
+    ],
+    [
+     3.18,
+     1.28,
+     1.03,
+     1.68,
+     3.41,
+     5.22,
+     8.09,
+     11.02,
+     17.05,
+     23.24,
+     31.04,
+     40.49
+    ],
+    [
+     0.07,
+     0.0,
+     0.0,
+     0.38,
+     0.15,
+     0.03,
+     0.06,
+     0.28,
+     0.45,
+     0.75,
+     1.27,
+     3.98
+    ],
+    [
+     0.61,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.22,
+     0.2,
+     0.36,
+     0.42,
+     0.99,
+     2.47,
+     5.98
+    ],
+    [
+     4.11,
+     2.32,
+     1.15,
+     1.26,
+     1.07,
+     1.92,
+     3.48,
+     4.71,
+     5.59,
+     7.48,
+     10.05,
+     14.86
+    ],
+    [
+     3.77,
+     0.37,
+     0.04,
+     0.22,
+     0.33,
+     0.46,
+     1.06,
+     1.84,
+     2.71,
+     4.62,
+     7.62,
+     17.51
+    ],
+    [
+     0.36,
+     0.18,
+     0.21,
+     0.28,
+     0.11,
+     0.42,
+     0.71,
+     1.23,
+     2.76,
+     4.07,
+     7.3,
+     10.8
+    ],
+    [
+     1.02,
+     0.28,
+     0.39,
+     0.66,
+     2.55,
+     4.07,
+     5.55,
+     7.02,
+     9.78,
+     12.4,
+     15.87,
+     19.85
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.06,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.74,
+     0.64,
+     0.76,
+     0.58,
+     1.57,
+     1.51,
+     2.6,
+     3.13,
+     3.97,
+     5.23,
+     8.53,
+     12.13
+    ],
+    [
+     1.84,
+     0.85,
+     0.0,
+     0.0,
+     0.33,
+     0.74,
+     1.92,
+     1.8,
+     3.09,
+     3.83,
+     6.65,
+     9.98
+    ],
+    [
+     1.09,
+     0.0,
+     0.84,
+     0.29,
+     0.67,
+     0.9,
+     1.87,
+     1.39,
+     2.96,
+     4.02,
+     5.98,
+     10.61
+    ],
+    [
+     0.0,
+     0.48,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.1,
+     0.14,
+     0.42,
+     0.66,
+     2.09,
+     4.6
+    ],
+    [
+     4.76,
+     0.0,
+     null,
+     0.0,
+     0.02,
+     0.01,
+     0.04,
+     0.08,
+     0.0,
+     0.0,
+     0.0,
+     33.33
+    ],
+    [
+     1.13,
+     0.71,
+     0.38,
+     0.25,
+     1.16,
+     1.55,
+     1.62,
+     1.77,
+     1.88,
+     2.94,
+     3.75,
+     5.88
+    ],
+    [
+     6.26,
+     0.82,
+     0.26,
+     0.22,
+     0.0,
+     0.0,
+     0.4,
+     0.56,
+     1.72,
+     1.82,
+     1.79,
+     0.0
+    ],
+    [
+     3.18,
+     1.31,
+     0.87,
+     0.98,
+     1.5,
+     2.37,
+     2.83,
+     3.4,
+     5.94,
+     7.58,
+     9.17,
+     11.9
+    ],
+    [
+     1.66,
+     0.52,
+     0.58,
+     0.88,
+     1.29,
+     1.44,
+     2.47,
+     4.36,
+     6.04,
+     8.95,
+     13.87,
+     18.13
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.28,
+     0.21,
+     0.28,
+     0.42,
+     1.02,
+     2.48,
+     14.02
+    ]
+   ]
+  },
+  "correlacao": {
+   "labels": [
+    "internacoes",
+    "media_permanencia",
+    "media_perm_macro",
+    "tx_mort_macro",
+    "tx_mort_melhor_hosp",
+    "tx_mortalidade",
+    "alto_risco"
+   ],
+   "valores": [
+    [
+     1.0,
+     0.198,
+     0.112,
+     0.231,
+     0.462,
+     0.486,
+     0.355
+    ],
+    [
+     0.198,
+     1.0,
+     0.355,
+     0.338,
+     0.423,
+     0.628,
+     0.567
+    ],
+    [
+     0.112,
+     0.355,
+     1.0,
+     0.916,
+     -0.007,
+     0.495,
+     0.44
+    ],
+    [
+     0.231,
+     0.338,
+     0.916,
+     1.0,
+     -0.009,
+     0.54,
+     0.488
+    ],
+    [
+     0.462,
+     0.423,
+     -0.007,
+     -0.009,
+     1.0,
+     0.649,
+     0.587
+    ],
+    [
+     0.486,
+     0.628,
+     0.495,
+     0.54,
+     0.649,
+     1.0,
+     0.871
+    ],
+    [
+     0.355,
+     0.567,
+     0.44,
+     0.488,
+     0.587,
+     0.871,
+     1.0
+    ]
+   ]
+  },
+  "histogramas": {
+   "internacoes": {
+    "log": true,
+    "bordas": [
+     0.693,
+     1.205,
+     1.716,
+     2.228,
+     2.74,
+     3.251,
+     3.763,
+     4.275,
+     4.786,
+     5.298,
+     5.81,
+     6.321,
+     6.833,
+     7.344,
+     7.856,
+     8.368,
+     8.879,
+     9.391,
+     9.903,
+     10.414,
+     10.926
+    ],
+    "contagem": [
+     1,
+     2,
+     2,
+     2,
+     5,
+     4,
+     4,
+     10,
+     10,
+     13,
+     23,
+     30,
+     24,
+     39,
+     20,
+     23,
+     16,
+     8,
+     2,
+     1
+    ]
+   },
+   "media_permanencia": {
+    "log": false,
+    "bordas": [
+     0.1,
+     0.895,
+     1.69,
+     2.485,
+     3.28,
+     4.075,
+     4.87,
+     5.665,
+     6.46,
+     7.255,
+     8.05,
+     8.845,
+     9.64,
+     10.435,
+     11.23,
+     12.025,
+     12.82,
+     13.615,
+     14.41,
+     15.205,
+     16.0
+    ],
+    "contagem": [
+     13,
+     9,
+     14,
+     35,
+     39,
+     32,
+     18,
+     25,
+     12,
+     14,
+     7,
+     5,
+     7,
+     2,
+     0,
+     3,
+     2,
+     0,
+     0,
+     2
+    ]
+   },
+   "media_perm_macro": {
+    "log": false,
+    "bordas": [
+     3.05,
+     3.222,
+     3.395,
+     3.567,
+     3.74,
+     3.912,
+     4.085,
+     4.258,
+     4.43,
+     4.603,
+     4.775,
+     4.947,
+     5.12,
+     5.293,
+     5.465,
+     5.638,
+     5.81,
+     5.982,
+     6.155,
+     6.328,
+     6.5
+    ],
+    "contagem": [
+     39,
+     40,
+     0,
+     20,
+     0,
+     20,
+     0,
+     0,
+     20,
+     0,
+     0,
+     0,
+     20,
+     40,
+     0,
+     0,
+     20,
+     0,
+     0,
+     20
+    ]
+   },
+   "tx_mort_macro": {
+    "log": false,
+    "bordas": [
+     0.468,
+     1.225,
+     1.983,
+     2.74,
+     3.498,
+     4.256,
+     5.013,
+     5.771,
+     6.529,
+     7.286,
+     8.044,
+     8.801,
+     9.559,
+     10.317,
+     11.074,
+     11.832,
+     12.589,
+     13.347,
+     14.105,
+     14.862,
+     15.62
+    ],
+    "contagem": [
+     119,
+     20,
+     20,
+     0,
+     20,
+     0,
+     0,
+     20,
+     0,
+     0,
+     0,
+     0,
+     20,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     20
+    ]
+   },
+   "tx_mort_melhor_hosp": {
+    "log": false,
+    "bordas": [
+     0.0,
+     0.761,
+     1.522,
+     2.283,
+     3.044,
+     3.805,
+     4.566,
+     5.327,
+     6.088,
+     6.849,
+     7.61,
+     8.371,
+     9.132,
+     9.893,
+     10.654,
+     11.415,
+     12.176,
+     12.937,
+     13.698,
+     14.459,
+     15.22
+    ],
+    "contagem": [
+     95,
+     24,
+     0,
+     12,
+     12,
+     24,
+     0,
+     0,
+     12,
+     24,
+     0,
+     12,
+     0,
+     12,
+     0,
+     0,
+     0,
+     0,
+     0,
+     12
+    ]
+   },
+   "tx_mortalidade": {
+    "log": false,
+    "bordas": [
+     0.0,
+     2.025,
+     4.049,
+     6.074,
+     8.098,
+     10.123,
+     12.147,
+     14.172,
+     16.196,
+     18.221,
+     20.245,
+     22.27,
+     24.294,
+     26.319,
+     28.343,
+     30.368,
+     32.392,
+     34.417,
+     36.441,
+     38.466,
+     40.49
+    ],
+    "contagem": [
+     163,
+     27,
+     17,
+     8,
+     6,
+     5,
+     3,
+     2,
+     3,
+     1,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     1
+    ]
+   }
+  }
+ },
+ "figuras": [
+  "resultados/graficos/eda_01_alvo.png",
+  "resultados/graficos/eda_02_boxplots.png",
+  "resultados/graficos/eda_03_faixa_alvo.png",
+  "resultados/graficos/eda_04_doenca_alvo.png",
+  "resultados/graficos/eda_05_heatmap.png",
+  "resultados/graficos/eda_06_correlacao.png",
+  "resultados/graficos/eda_07_dispersao.png"
+ ]
+}

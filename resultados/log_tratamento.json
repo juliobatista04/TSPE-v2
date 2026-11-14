@@ -1,0 +1,21 @@
+{
+  "etapas": [
+    "data/raw/ incompleto (12 arquivos faltando). Usando dataset herdado: dataset_ml_legado.csv",
+    "Removidas 0 linhas sem internações/permanência",
+    "tx_mortalidade ausente em 0 linhas -> imputado 0 (zero óbitos)",
+    "Alvo 'alto_risco': 1 se tx_mortalidade > mediana (0.90). Distribuição: {0: 120, 1: 119}",
+    "Dataset salvo em /home/claude/tspe-v2/data/processado/dataset_ml.csv com 239 registros e 10 atributos"
+  ],
+  "ausentes_antes": {},
+  "linhas": {},
+  "origem": "legado",
+  "corte_alvo": 0.9,
+  "distribuicao_alvo": {
+    "0": 120,
+    "1": 119
+  },
+  "shape_final": [
+    239,
+    10
+  ]
+}
