@@ -25,6 +25,8 @@ def main(api_url: str = "http://localhost:5000") -> None:
         "tratamento": json.load(open(C.DIR_RESULTADOS / "log_tratamento.json", encoding="utf-8")),
         "metadados": json.load(open(C.DIR_MODELOS / "metadados.json", encoding="utf-8")),
     }
+    arq_ab = C.DIR_RESULTADOS / "ablacao.json"
+    dados["ablacao"] = json.load(open(arq_ab, encoding="utf-8")) if arq_ab.exists() else None
     # as figuras PNG não entram no HTML (os gráficos são desenhados ao vivo)
     dados["analise"].pop("figuras", None)
     dados["resultados"].pop("figuras", None)

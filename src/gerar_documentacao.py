@@ -49,8 +49,23 @@ def tabela_sel():
 def tabela_desc():
     linhas = ["| Variável | Média | Desvio | Mín | Mediana | Máx | Assimetria | Outliers (1,5×IQR) |", "|---|---|---|---|---|---|---|---|"]
     for v, d in res["descritivas"].items():
-        linhas.append(f"| {v} | {f(d['mean'],2)} | {f(d['std'],2)} | {f(d['min'],2)} | {f(d['50%'],2)} | {f(d['max'],2)} | {f(d['assimetria'],2)} | {out[v]['quantidade']} ({out[v]['percentual']}%) |")
+        linhas.append(f"| {v} | {f(d['mean'],2)} | {f(d['std'],2)} | {f(d['min'],2)} | {f(d['50%'],2)} | {f(d['max'],2)} | {f(d['assimetria'],2)} | {out[v]['quantidade']} ({str(out[v]['percentual']).replace('.', ',')}%) |")
     return "\n".join(linhas)
+
+def bloco_ablacao():
+    arq = C.DIR_RESULTADOS / "ablacao.json"
+    if not arq.exists():
+        return ""
+    ab = json.load(open(arq, encoding="utf-8"))
+    linhas = ["", "**Teste de sensibilidade (ablação).** Para medir quanto o desempenho depende das variáveis de contexto, os modelos foram treinados de novo, com o mesmo split, a mesma validação e Grid Search, em quatro cenários (`src/ablacao.py`):", "",
+              "| Cenário | Variáveis | RF AUROC CV | RF AUROC teste | GB AUROC CV | GB AUROC teste |", "|---|---|---|---|---|---|"]
+    for c in ab:
+        m = c["modelos"]; neg = "**" if c["cenario"].startswith("Sem contexto +") else ""
+        linhas.append(f"| {neg}{c['cenario']}{neg} | {neg}{c['descricao']}{neg} | {neg}{f(m['RF']['auroc_cv'])}{neg} | {neg}{f(m['RF']['auroc_teste'])}{neg} | {neg}{f(m['GB']['auroc_cv'])}{neg} | {neg}{f(m['GB']['auroc_teste'])}{neg} |")
+    c = next(x for x in ab if x["cenario"].startswith("Sem contexto +"))["modelos"]
+    linhas += ["", f"Leitura: retirar as variáveis de contexto derruba o desempenho só quando a informação da doença some junto. Com o capítulo CID codificado diretamente, sem nenhuma taxa de mortalidade como entrada, o Random Forest volta a AUROC de {f(c['RF']['auroc_cv'])} na validação cruzada e {f(c['RF']['auroc_teste'])} no teste. Ou seja, `tx_mort_melhor_hosp` funciona como um resumo da doença (um valor por capítulo), e o poder preditivo vem da combinação doença × idade × permanência, não de vazamento do alvo.", ""]
+    return "\n".join(linhas)
+
 
 faixa = A["series"]["alto_risco_por_faixa"]; doen = A["series"]["alto_risco_por_doenca"]
 imp = R["importancias_melhor_modelo"]
@@ -58,8 +73,8 @@ comb = sum(m["combinacoes_testadas"] for m in M.values())
 
 doc = f"""# Classificação de risco de mortalidade hospitalar em Pernambuco com Machine Learning
 
-**Disciplina:** WYD6399 · Tópicos em Big Data em Python · UniFavip Wyden
-**Professor:** Me. Flávio Morais
+**Disciplina:** WYD6399 · Tópicos Avançados em Big Data com Python · UniFavip Wyden
+**Professor:** Melquezedeque Lima
 **Equipe:** Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi
 **Data:** {date.today().strftime('%d/%m/%Y')} · Apresentação: 30/11/2026
 
@@ -114,14 +129,16 @@ Decisões adicionais: `melhor_hospital` foi descartada antes da análise (texto 
 
 **Variáveis finais:** {", ".join(f"`{v}`" for v in S["selecionadas"])}.
 
+**Variáveis de contexto e risco de vazamento:** `tx_mort_macro` e `tx_mort_melhor_hosp` vêm da mesma fonte de mortalidade que origina o alvo, mas em outro nível de agregação. A primeira é a taxa estadual da faixa etária, somando todas as doenças. A segunda é a taxa do hospital de maior volume no capítulo CID, somando todas as idades. Nenhuma delas é a taxa do próprio grupo (`tx_mortalidade`), que ficou fora do modelo. Elas representam informação que o gestor já tem antes de avaliar um grupo: o risco típico daquela idade e o desempenho do hospital de referência daquela doença. Como foram calculadas no mesmo período do alvo, essa limitação é discutida e testada na seção 3.3.
+
 ### 2.4 Pré-processamento (`src/preprocessamento.py`)
 | Procedimento | O que foi feito | Justificativa |
 |---|---|---|
 | Limpeza | Remoção de cabeçalho/rodapé, totais e prefixos | Artefatos de exportação do TABNET |
 | Ausentes | 0 para mortalidade (zero óbitos); mediana para contexto | Semântica do TABNET; mediana é robusta a outliers |
 | Outliers | Mantidos | São os grupos de alto risco reais |
-| Transformação | `log1p(internacoes)` | Cauda longa; reduz o peso dos extremos |
-| Codificação | Faixa etária ordinal (0 a 11); capítulo CID one-hot | Idade tem ordem natural; doença é nominal |
+| Transformação | `log1p(internacoes)`, gerando a candidata `log_internacoes` | Cauda longa; reduz o peso dos extremos. A variável foi avaliada na seleção e descartada (1/3 critérios) |
+| Codificação | Faixa etária ordinal (0 a 11); capítulo CID codificado (`doenca_cod`) para a etapa de seleção | Idade tem ordem natural. O capítulo CID foi descartado na seleção (1/3 critérios); a doença entra no modelo de forma indireta, pela `tx_mort_melhor_hosp` |
 | Padronização | `StandardScaler` dentro do Pipeline | KNN, SVM e Regressão Logística dependem de escala; ajustado só no treino de cada fold |
 | Balanceamento | Não necessário (alvo pela mediana); `class_weight="balanced"` onde disponível | Classes {res['distribuicao_alvo']['Baixo risco']} × {res['distribuicao_alvo']['Alto risco']} |
 | Divisão | {int((1-R['problema']['proporcao_teste'])*100)}% treino ({R['problema']['n_treino']}) / {int(R['problema']['proporcao_teste']*100)}% teste ({R['problema']['n_teste']}), estratificada, semente {R['problema']['semente']} | Teste nunca é usado para escolher nada |
@@ -150,7 +167,7 @@ No conjunto de teste ({R['problema']['n_teste']} registros, nunca vistos), cada 
 
 ### 3.2 Discussão
 - O **{melhor}** foi o modelo escolhido, com AUROC de {f(M[melhor]['cv_auroc_media'])} ± {f(M[melhor]['cv_auroc_dp'],2)} na validação cruzada e {f(mb['auroc'])} no teste. Classificou corretamente {pc(mb['acuracia'])} dos grupos, com sensibilidade de {pc(mb['sensibilidade'])} e especificidade de {pc(mb['especificidade'])}: erra pouco nos dois sentidos.
-- Os modelos de conjunto (Random Forest e Gradient Boosting) e o SVM ficaram próximos entre si e acima dos modelos mais simples. A Árvore de Decisão isolada teve o pior desempenho ({f(M['Árvore de Decisão']['teste']['auroc'])} de AUROC), o que confirma o ganho de variância dos métodos de ensemble.
+- Os modelos de conjunto (Random Forest e Gradient Boosting) e o SVM ficaram próximos entre si e acima dos modelos mais simples. A Árvore de Decisão isolada teve o pior desempenho ({f(M['Árvore de Decisão']['teste']['auroc'])} de AUROC), o que confirma a redução de variância obtida pelos métodos de ensemble.
 - A Regressão Logística, mesmo sendo linear, alcançou AUROC de {f(M['Regressão Logística']['teste']['auroc'])}: a relação entre as variáveis e o alvo é em boa parte monotônica.
 - AUROC de validação cruzada e de teste ficaram próximas em todos os modelos: não há sinal de sobreajuste relevante.
 - **Importância das variáveis no {melhor}** (queda de AUROC ao permutar): {"; ".join(f"`{i['variavel']}` {f(i['importancia'])}" for i in imp)}. A taxa de mortalidade do hospital de referência da doença é o fator mais informativo, seguida do tempo médio de permanência do próprio grupo.
@@ -158,7 +175,8 @@ No conjunto de teste ({R['problema']['n_teste']} registros, nunca vistos), cada 
 ### 3.3 Limitações
 - A base tem {res['registros']} grupos; o conjunto de teste tem {R['problema']['n_teste']}. Cada erro a mais muda a acurácia em cerca de {f(100/R['problema']['n_teste'],1)} pontos percentuais, então as diferenças entre os três melhores modelos não são estatisticamente conclusivas.
 - O alvo é um corte estatístico (mediana) sobre grupos agregados, não um desfecho clínico individual. O modelo classifica grupos, não pacientes, e serve como apoio à gestão.
-- As variáveis de contexto (`tx_mort_macro`, `tx_mort_melhor_hosp`) são agregações do próprio período; em produção precisariam ser recalculadas periodicamente.
+- As variáveis de contexto (`tx_mort_macro`, `tx_mort_melhor_hosp`) são agregações do mesmo período e da mesma fonte que originam o alvo. Mesmo estando em outro nível de agregação, carregam parte da informação de mortalidade do grupo. Para medir esse efeito, treinamos uma versão do modelo sem elas (tabela abaixo). Uma validação ainda mais rigorosa seria calculá-las com dados de um período anterior ao do alvo. Em produção, precisariam ser recalculadas periodicamente.
+{bloco_ablacao()}
 
 ### 3.4 Interface
 A interface (`frontend/index.html`) é um único arquivo HTML, organizado nas quatro partes pedidas: (1) problema, contexto, objetivo, base e variável-alvo; (2) metodologia com fluxo visual, tabela de seleção e justificativas de pré-processamento; (3) análise gráfica interativa de cada variável contra o alvo; (4) resultados dos modelos com tabela comparativa, métricas, curvas ROC, matrizes de confusão, importâncias e hiperparâmetros. Inclui ainda um simulador que consulta a API Flask (`api.py`) para classificar novos grupos.

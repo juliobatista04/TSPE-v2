@@ -158,7 +158,7 @@ footer h2{color:#fff}
 
 <!-- ───────────────────────── CAPA ───────────────────────── -->
 <header class="capa"><div class="wrap">
-  <span class="tag dark">WYD6399 · Tópicos em Big Data em Python · UniFavip Wyden</span>
+  <span class="tag dark">WYD6399 · Tópicos Avançados em Big Data com Python · UniFavip Wyden</span>
   <h1>Quem tem mais risco de <em>morrer internado</em> em Pernambuco?</h1>
   <p class="sub">Um classificador de Machine Learning treinado com dados públicos do SIH/SUS (DATASUS) que aponta, para cada combinação de doença e faixa etária, se a taxa de mortalidade hospitalar fica acima ou abaixo da mediana do estado.</p>
   <div class="meta">
@@ -181,7 +181,7 @@ footer h2{color:#fff}
     <div class="card"><div class="ttl">Contexto</div>
       <p>Pernambuco registrou centenas de milhares de internações pelo SUS no período analisado, em 164 municípios. A taxa de mortalidade hospitalar vai de <b>0%</b> em grupos de baixo risco até mais de <b>40%</b> em grupos críticos. Enxergar esse padrão ajuda a planejar a rede de atenção.</p></div>
     <div class="card"><div class="ttl">Objetivo</div>
-      <p>Treinar e comparar modelos de classificação que recebam <b>capítulo CID da doença</b>, <b>faixa etária</b> e <b>tempo médio de permanência</b> e respondam se o grupo é de <b>alto</b> ou <b>baixo risco</b> de mortalidade hospitalar.</p></div>
+      <p>Treinar e comparar modelos de classificação que, a partir do <b>capítulo CID da doença</b>, da <b>faixa etária</b> e do <b>tempo médio de permanência</b>, respondam se o grupo é de <b>alto</b> ou <b>baixo risco</b> de mortalidade hospitalar. A doença e a faixa etária entram no modelo pelas taxas de referência correspondentes: a mortalidade do hospital de referência da doença e a mortalidade estadual da faixa etária.</p></div>
     <div class="card"><div class="ttl">Base de dados</div>
       <p><b>SIH/SUS via TABNET (DATASUS)</b>, Morbidade Hospitalar do SUS por local de internação, Pernambuco. Exportações em CSV cruzando capítulo CID-10, faixa etária, município, sexo e estabelecimento, com três medidas: internações, média de permanência e taxa de mortalidade.</p>
       <ul><li>12 arquivos brutos, cabeçalho e rodapé do TABNET, números no formato brasileiro</li><li>Valores ausentes ("-") onde não houve óbito</li><li>Nenhuma coluna pronta para ML: tudo foi limpo, derretido e unido pela equipe</li></ul></div>
@@ -207,7 +207,7 @@ footer h2{color:#fff}
     <div class="fnode"><div class="t">Base de dados</div><p><b id="m-reg">–</b> registros × <b id="m-atr">–</b> atributos após o tratamento. 12 CSVs do TABNET unidos.</p></div>
     <div class="fnode"><div class="t">Análise</div><p>Ausentes, duplicados, outliers (1,5×IQR), assimetria, correlação de Spearman, gráfico de cada variável × alvo.</p></div>
     <div class="fnode"><div class="t">Seleção</div><p>Informação mútua + Spearman + importância por permutação. Entra quem passa em 2 de 3. Colineares (ρ&gt;0,85): fica a mais importante.</p></div>
-    <div class="fnode"><div class="t">Pré-processamento</div><p>Ordinal na idade, log nas internações, one-hot na doença, StandardScaler, split estratificado 75/25.</p></div>
+    <div class="fnode"><div class="t">Pré-processamento</div><p>Ordinal na idade, log nas internações (candidata), StandardScaler dentro do Pipeline, split estratificado 75/25.</p></div>
     <div class="fnode"><div class="t">Modelagem</div><p>Regressão Logística, KNN, Árvore, Random Forest, SVM e Gradient Boosting.</p></div>
     <div class="fnode"><div class="t">Otimização</div><p>GridSearchCV com StratifiedKFold(5) otimizando AUROC. <b id="m-comb">–</b> combinações testadas no total.</p></div>
     <div class="fnode final"><div class="t">Avaliação</div><p>AUROC, F1, sensibilidade, especificidade, precisão, acurácia e matriz de confusão no teste.</p></div>
@@ -277,7 +277,7 @@ footer h2{color:#fff}
   <h3>Melhores hiperparâmetros encontrados</h3>
   <div class="grid g3" id="hps"></div>
   <div class="warn" style="margin-top:1.2rem"><b>⚠ Limites do estudo</b>
-    <p>A base tem poucas centenas de grupos (doença × faixa etária), então as métricas no teste têm margem de erro grande. O alvo é um corte estatístico (mediana), não um desfecho clínico individual: o modelo classifica grupos, não pacientes. Use como apoio à gestão, nunca como decisão médica.</p></div>
+    <p>A base tem poucas centenas de grupos (doença × faixa etária), então as métricas no teste têm margem de erro grande. O alvo é um corte estatístico (mediana), não um desfecho clínico individual: o modelo classifica grupos, não pacientes. Use como apoio à gestão, nunca como decisão médica.</p><p id="nota-ablacao" style="margin-top:.6rem"></p></div>
 </div></section>
 
 <!-- ───────────────────────── SIMULADOR ───────────────────────── -->
@@ -323,7 +323,7 @@ footer h2{color:#fff}
     <li>HAN, J.; KAMBER, M.; PEI, J. <i>Data Mining: Concepts and Techniques</i>. 3. ed. Morgan Kaufmann, 2011.</li>
     <li>ORGANIZAÇÃO MUNDIAL DA SAÚDE. <i>CID-10: Classificação Estatística Internacional de Doenças</i>. 10. rev. São Paulo: EDUSP, 2008.</li>
   </ul>
-  <p style="margin-top:2rem;font-size:.85rem;color:rgba(255,255,255,.5)">Disciplina WYD6399 · Prof. Me. Flávio Morais · UniFavip Wyden · Caruaru, PE · 2026</p>
+  <p style="margin-top:2rem;font-size:.85rem;color:rgba(255,255,255,.5)">Disciplina WYD6399 · Prof. Melquezedeque Lima · UniFavip Wyden · Caruaru, PE · 2026</p>
 </div></footer>
 
 <script>
@@ -386,7 +386,7 @@ function init(){
   document.getElementById("qualidade").innerHTML=`
     <div class="card"><div class="ttl">Dados ausentes</div><div class="big">${T.origem==="raw"?aus:"–"}</div><p>${T.origem==="raw"?'células ausentes nos arquivos brutos (taxa de mortalidade "-" = zero óbitos).':'nos arquivos brutos do TABNET, a taxa de mortalidade vem como "-" quando não houve óbito; o tratamento imputa 0. Rode o pipeline com data/raw/ preenchido para ver a contagem exata.'} Após o tratamento: <b>${Object.values(A.resumo.ausentes_por_coluna).reduce((a,b)=>a+b,0)}</b>.</p></div>
     <div class="card"><div class="ttl">Duplicados</div><div class="big">${A.resumo.duplicados}</div><p>registros duplicados após a união das tabelas.</p></div>
-    <div class="card"><div class="ttl">Outliers (1,5 × IQR)</div><ul>${Object.entries(O).map(([k,o])=>`<li><b>${k}</b>: ${o.quantidade} (${o.percentual}%)</li>`).join("")}</ul><p class="punch">Mantidos: representam grupos reais de alto risco.</p></div>`;
+    <div class="card"><div class="ttl">Outliers (1,5 × IQR)</div><ul>${Object.entries(O).map(([k,o])=>`<li><b>${k}</b>: ${o.quantidade} (${String(o.percentual).replace(".",",")}%)</li>`).join("")}</ul><p class="punch">Mantidos: representam grupos reais de alto risco.</p></div>`;
   // ── parte 4
   const M=R.modelos, nomes=Object.keys(M), best=R.melhor_modelo, mb=M[best].teste;
   document.getElementById("res-kpis").innerHTML=[["Melhor modelo",best],["AUROC (teste)",fmt(mb.auroc,3)],["F1 (teste)",fmt(mb.f1,3)],["Sensibilidade",pct(mb.sensibilidade)],["Especificidade",pct(mb.especificidade)]]
@@ -408,6 +408,9 @@ function init(){
   new Chart(document.getElementById("c-imp"),{type:"bar",data:{labels:I.map(i=>i.variavel),datasets:[{data:I.map(i=>i.importancia),backgroundColor:ROXO,borderRadius:6}]},
     options:{indexAxis:"y",plugins:{legend:{display:false}},maintainAspectRatio:false}});
   document.getElementById("hps").innerHTML=nomes.map(n=>`<div class="card"><div class="ttl">${n}</div><ul>${Object.entries(M[n].melhores_hiperparametros).map(([k,v])=>`<li><b>${k}</b> = ${v}</li>`).join("")}</ul><p class="sub" style="margin-top:.5rem">${M[n].justificativa}</p></div>`).join("");
+  // ── nota de ablação (vazamento)
+  const AB=DADOS.ablacao; if(AB){const c=AB.find(x=>x.cenario.startsWith("Sem contexto +"));if(c){const v=n=>String(n.toFixed(3)).replace(".",",");
+    document.getElementById("nota-ablacao").innerHTML=`Sobre as variáveis de contexto (<strong style="color:#FFB3CC">tx_mort_macro</strong> e <strong style="color:#FFB3CC">tx_mort_melhor_hosp</strong>): vêm da mesma fonte do alvo, em outro nível de agregação. Testamos o modelo <strong style="color:#FFB3CC">sem nenhuma variável de mortalidade</strong>, só com doença, faixa etária e permanência: o Random Forest manteve AUROC de ${v(c.modelos.RF.auroc_cv)} na validação cruzada e ${v(c.modelos.RF.auroc_teste)} no teste. O sinal vem da doença e da idade, não de vazamento.`}}
   // ── simulador
   const meta=DADOS.metadados;
   document.getElementById("f-doenca").innerHTML=meta.doencas.map(d=>`<option>${d}</option>`).join("");

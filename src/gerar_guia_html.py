@@ -79,7 +79,7 @@ html = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta n
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body>
 <header class="capa"><div class="wrap">
-  <span class="tag">WYD6399 · Tópicos em Big Data em Python · UniFavip Wyden</span>
+  <span class="tag">WYD6399 · Tópicos Avançados em Big Data com Python · UniFavip Wyden</span>
   <h1>TSPE v2: <em>guia passo a passo</em> e documentação do projeto</h1>
   <p>Como reproduzir, publicar e defender o classificador de risco de mortalidade hospitalar em Pernambuco. Equipe: Julio César Batista Silva, Teves Gabriel, Luciano Filho, Jonathas Costa e Anderson Davi.</p>
 </div></header>
@@ -91,7 +91,7 @@ html = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta n
     <div class="part"><div class="kicker">Parte B</div><h2 id="documentacao" style="border:0;margin-top:.3rem">Documentação do projeto</h2>{doc_html}</div>
   </main>
 </div>
-<footer><div class="wrap">TSPE v2 · Disciplina WYD6399 · Prof. Me. Flávio Morais · UniFavip Wyden · Caruaru, PE · 2026</div></footer>
+<footer><div class="wrap">TSPE v2 · Disciplina WYD6399 · Prof. Melquezedeque Lima · UniFavip Wyden · Caruaru, PE · 2026</div></footer>
 </body></html>"""
 saida = C.RAIZ / "docs" / "Guia_TSPE_v2.html"
 saida.write_text(html, encoding="utf-8")

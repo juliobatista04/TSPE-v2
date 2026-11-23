@@ -1,0 +1,106 @@
+[
+  {
+    "cenario": "Completo",
+    "descricao": "as 4 selecionadas",
+    "variaveis": [
+      "faixa_etaria_ord",
+      "media_permanencia",
+      "tx_mort_macro",
+      "tx_mort_melhor_hosp"
+    ],
+    "modelos": {
+      "RF": {
+        "auroc_cv": 0.976,
+        "auroc_teste": 0.953,
+        "acuracia_teste": 0.917
+      },
+      "GB": {
+        "auroc_cv": 0.967,
+        "auroc_teste": 0.955,
+        "acuracia_teste": 0.9
+      },
+      "LR": {
+        "auroc_cv": 0.935,
+        "auroc_teste": 0.888,
+        "acuracia_teste": 0.817
+      }
+    }
+  },
+  {
+    "cenario": "Sem tx_mort_melhor_hosp",
+    "descricao": "permanência, idade, tx_mort_macro",
+    "variaveis": [
+      "faixa_etaria_ord",
+      "media_permanencia",
+      "tx_mort_macro"
+    ],
+    "modelos": {
+      "RF": {
+        "auroc_cv": 0.906,
+        "auroc_teste": 0.818,
+        "acuracia_teste": 0.733
+      },
+      "GB": {
+        "auroc_cv": 0.896,
+        "auroc_teste": 0.849,
+        "acuracia_teste": 0.733
+      },
+      "LR": {
+        "auroc_cv": 0.874,
+        "auroc_teste": 0.815,
+        "acuracia_teste": 0.75
+      }
+    }
+  },
+  {
+    "cenario": "Sem as duas de contexto",
+    "descricao": "permanência, idade",
+    "variaveis": [
+      "faixa_etaria_ord",
+      "media_permanencia"
+    ],
+    "modelos": {
+      "RF": {
+        "auroc_cv": 0.909,
+        "auroc_teste": 0.843,
+        "acuracia_teste": 0.8
+      },
+      "GB": {
+        "auroc_cv": 0.888,
+        "auroc_teste": 0.846,
+        "acuracia_teste": 0.783
+      },
+      "LR": {
+        "auroc_cv": 0.866,
+        "auroc_teste": 0.817,
+        "acuracia_teste": 0.783
+      }
+    }
+  },
+  {
+    "cenario": "Sem contexto + capítulo CID (one-hot)",
+    "descricao": "permanência, idade, doença",
+    "variaveis": [
+      "faixa_etaria_ord",
+      "doenca_cid",
+      "media_permanencia"
+    ],
+    "modelos": {
+      "RF": {
+        "auroc_cv": 0.956,
+        "auroc_teste": 0.943,
+        "acuracia_teste": 0.9
+      },
+      "GB": {
+        "auroc_cv": 0.95,
+        "auroc_teste": 0.939,
+        "acuracia_teste": 0.9
+      },
+      "LR": {
+        "auroc_cv": 0.925,
+        "auroc_teste": 0.933,
+        "acuracia_teste": 0.917
+      }
+    }
+  }
+]

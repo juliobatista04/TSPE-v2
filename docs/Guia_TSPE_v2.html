@@ -43,7 +43,7 @@ footer{background:linear-gradient(180deg,#1C1824,#0F0C14);color:rgba(255,255,255
 @media(max-width:860px){.layout{grid-template-columns:1fr}nav.idx{position:static;max-height:none}}
 </style></head><body>
 <header class="capa"><div class="wrap">
-  <span class="tag">WYD6399 · Tópicos em Big Data em Python · UniFavip Wyden</span>
+  <span class="tag">WYD6399 · Tópicos Avançados em Big Data com Python · UniFavip Wyden</span>
   <h1>TSPE v2: <em>guia passo a passo</em> e documentação do projeto</h1>
   <p>Como reproduzir, publicar e defender o classificador de risco de mortalidade hospitalar em Pernambuco. Equipe: Julio César Batista Silva, Teves Gabriel, Luciano Filho, Jonathas Costa e Anderson Davi.</p>
 </div></header>
@@ -128,7 +128,7 @@ pip install -r requirements.txt
 <li><strong>Tratamento</strong> (<code>tratamento.py</code>): lê os CSVs do TABNET, limpa cabeçalho/rodapé, converte números, derrete tabelas largas, une internações + permanência + mortalidade, cria o alvo <code>alto_risco</code> (1 se taxa de mortalidade &gt; mediana). Grava <code>data/processado/dataset_ml.csv</code> e <code>resultados/log_tratamento.json</code>.</li>
 <li><strong>Análise</strong> (<code>analise.py</code>): estatísticas descritivas, ausentes, duplicados, outliers (1,5×IQR), correlação de Spearman, séries para os gráficos. Grava <code>resultados/analise.json</code> e 7 PNGs.</li>
 <li><strong>Seleção de variáveis</strong> (<code>selecao_variaveis.py</code>): informação mútua, Spearman e importância por permutação, só no treino. Entra quem passa em 2 de 3; entre colineares fica a mais importante. Grava <code>resultados/selecao_variaveis.json</code> com a justificativa de cada variável.</li>
-<li><strong>Treino</strong> (<code>treinar.py</code>): seis modelos em Pipeline, <code>GridSearchCV</code> com <code>StratifiedKFold(5)</code> otimizando AUROC, avaliação no teste (25%). Grava <code>resultados/resultados_modelos.json</code>, 5 PNGs, <code>modelos/melhor_modelo.joblib</code> e <code>modelos/metadados.json</code>.</li>
+<li><strong>Treino</strong> (<code>treinar.py</code>) e <strong>ablação</strong> (<code>ablacao.py</code>, testa o modelo sem as variáveis de contexto): seis modelos em Pipeline, <code>GridSearchCV</code> com <code>StratifiedKFold(5)</code> otimizando AUROC, avaliação no teste (25%). Grava <code>resultados/resultados_modelos.json</code>, 5 PNGs, <code>modelos/melhor_modelo.joblib</code> e <code>modelos/metadados.json</code>.</li>
 <li><strong>Interface</strong> (<code>build_frontend.py</code>): injeta os JSONs no <code>frontend/template.html</code> e gera <code>frontend/index.html</code> (um arquivo só, com Chart.js embutido).</li>
 <li><strong>Figura</strong> (<code>gerar_drawio.py</code>): <code>docs/metodologia.drawio</code> e <code>.svg</code> com os números reais.</li>
 <li><strong>Documentação</strong> (<code>gerar_documentacao.py</code>): <code>docs/Documentacao.md</code>.</li>
@@ -187,7 +187,7 @@ pip install -r requirements.txt
 </tr>
 <tr>
 <td>Houve vazamento?</td>
-<td>Não: <code>tx_mortalidade</code> (origem do alvo) ficou fora; escala e one-hot são ajustados dentro do Pipeline, só no treino de cada fold; teste é tocado uma vez.</td>
+<td>A taxa do próprio grupo (<code>tx_mortalidade</code>, origem do alvo) ficou fora. As variáveis de contexto vêm da mesma fonte, mas em outro nível: <code>tx_mort_macro</code> é a taxa da faixa etária somando todas as doenças, e <code>tx_mort_melhor_hosp</code> é a taxa do hospital de referência da doença somando todas as idades. Testamos sem elas (<code>src/ablacao.py</code>): com doença (one-hot), idade e permanência, sem nenhuma taxa de mortalidade, o Random Forest manteve AUROC 0,956 na CV e 0,943 no teste. O sinal vem da doença e da idade, não de vazamento. A escala é ajustada dentro do Pipeline, só no treino de cada fold, e o teste é usado uma única vez.</td>
 </tr>
 <tr>
 <td>Por que AUROC no Grid Search?</td>
@@ -210,23 +210,24 @@ pip install -r requirements.txt
 <li><strong>Mudar cores/textos da interface:</strong> edite <code>frontend/template.html</code> (tokens de cor no topo do CSS) e rode <code>python src/build_frontend.py</code>.</li>
 <li><strong>Renomear os CSVs do TABNET:</strong> edite <code>ARQUIVOS_RAW</code> em <code>src/config.py</code>.</li>
 </ul></div>
-    <div class="part"><div class="kicker">Figura da metodologia</div><h2 id="figura" style="border:0;margin-top:.3rem">Fluxo em sete etapas</h2><p>Gerada automaticamente com os números do pipeline; a versão editável está em <code>docs/metodologia.drawio</code>.</p><div style="overflow:auto;border:1.5px solid var(--line);border-radius:16px;background:#F6F6F6"><svg xmlns="http://www.w3.org/2000/svg" width="1220" height="560" font-family="Helvetica, Arial, sans-serif">
+    <div class="part"><div class="kicker">Figura da metodologia</div><h2 id="figura" style="border:0;margin-top:.3rem">Fluxo em sete etapas</h2><p>Gerada automaticamente com os números do pipeline; a versão editável está em <code>docs/metodologia.drawio</code>.</p><div style="overflow:auto;border:1.5px solid var(--line);border-radius:16px;background:#F6F6F6"><svg xmlns="http://www.w3.org/2000/svg" width="1220" height="575" font-family="Helvetica, Arial, sans-serif">
 <rect width="100%" height="100%" fill="#F6F6F6"/>
 <text x="40" y="38" font-size="20" font-weight="bold" fill="#40005F">METODOLOGIA · TSPE</text>
 <text x="40" y="58" font-size="12" fill="#4A3D5C">Classificação de risco de mortalidade hospitalar em Pernambuco (SIH/SUS)</text>
-<rect x="40" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<rect x="40" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="50" y="100" font-size="11" font-weight="bold" fill="#40005F">1. BASE DE DADOS</text>
 <text x="50" y="120" font-size="10" fill="#1A1226">SIH/SUS · TABNET (DATASUS)</text>
 <text x="50" y="136" font-size="10" fill="#1A1226">Pernambuco · 12 CSVs brutos</text>
 <text x="50" y="152" font-size="10" fill="#1A1226">239 registros × 10 atributos</text>
-<text x="50" y="168" font-size="10" fill="#1A1226">Alvo: alto_risco (tx. mortalidade &gt; mediana</text>
-<rect x="330" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<text x="50" y="168" font-size="10" fill="#1A1226">Alvo: alto_risco</text>
+<text x="50" y="184" font-size="10" fill="#1A1226">(tx. mortalidade &gt; mediana 0,90%)</text>
+<rect x="330" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="340" y="100" font-size="11" font-weight="bold" fill="#40005F">2. ANÁLISE DOS DADOS</text>
 <text x="340" y="120" font-size="10" fill="#1A1226">Ausentes (&#x27;-&#x27; = zero óbitos)</text>
 <text x="340" y="136" font-size="10" fill="#1A1226">Duplicados · Outliers 1,5×IQR</text>
 <text x="340" y="152" font-size="10" fill="#1A1226">Assimetria · Spearman</text>
 <text x="340" y="168" font-size="10" fill="#1A1226">Gráfico de cada variável × alvo</text>
-<rect x="620" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<rect x="620" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="630" y="100" font-size="11" font-weight="bold" fill="#40005F">3. SELEÇÃO DE VARIÁVEIS</text>
 <text x="630" y="120" font-size="10" fill="#1A1226">Informação mútua</text>
 <text x="630" y="136" font-size="10" fill="#1A1226">|ρ| Spearman com o alvo</text>
@@ -235,43 +236,44 @@ pip install -r requirements.txt
 <text x="630" y="184" font-size="10" fill="#1A1226">Selecionadas:</text>
 <text x="630" y="200" font-size="10" fill="#1A1226">tx_mort_melhor_hosp, media_permanencia</text>
 <text x="630" y="216" font-size="10" fill="#1A1226">tx_mort_macro, faixa_etaria_ord</text>
-<rect x="910" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<rect x="910" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="920" y="100" font-size="11" font-weight="bold" fill="#40005F">4. PRÉ-PROCESSAMENTO</text>
 <text x="920" y="120" font-size="10" fill="#1A1226">Limpeza TABNET · imputação (0 / mediana)</text>
 <text x="920" y="136" font-size="10" fill="#1A1226">Outliers mantidos (grupos reais)</text>
-<text x="920" y="152" font-size="10" fill="#1A1226">log1p(internações) · ordinal(idade)</text>
-<text x="920" y="168" font-size="10" fill="#1A1226">One-hot(doença) · StandardScaler</text>
+<text x="920" y="152" font-size="10" fill="#1A1226">ordinal(idade) · log1p(internações)</text>
+<text x="920" y="168" font-size="10" fill="#1A1226">StandardScaler dentro do Pipeline</text>
 <text x="920" y="184" font-size="10" fill="#1A1226">Classes 50/50 · split 75/25 estratificado</text>
-<rect x="40" y="320" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
-<text x="50" y="340" font-size="11" font-weight="bold" fill="#40005F">5. MODELAGEM</text>
-<text x="50" y="360" font-size="10" fill="#1A1226">Regressão Logística · KNN</text>
-<text x="50" y="376" font-size="10" fill="#1A1226">Árvore de Decisão · Random Forest</text>
-<text x="50" y="392" font-size="10" fill="#1A1226">SVM (RBF) · Gradient Boosting</text>
-<text x="50" y="408" font-size="10" fill="#1A1226">Pipeline sklearn (pré + modelo)</text>
-<rect x="330" y="320" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
-<text x="340" y="340" font-size="11" font-weight="bold" fill="#40005F">6. OTIMIZAÇÃO</text>
-<text x="340" y="360" font-size="10" fill="#1A1226">GridSearchCV</text>
-<text x="340" y="376" font-size="10" fill="#1A1226">StratifiedKFold (k=5)</text>
-<text x="340" y="392" font-size="10" fill="#1A1226">Métrica: AUROC</text>
-<text x="340" y="408" font-size="10" fill="#1A1226">157 combinações testadas</text>
-<rect x="620" y="320" rx="14" width="250" height="150" fill="#40005F" stroke="#8B3DB8" stroke-width="2"/>
-<text x="630" y="340" font-size="11" font-weight="bold" fill="#B57BDB">7. AVALIAÇÃO</text>
-<text x="630" y="360" font-size="10" fill="#fff">AUROC · F1 · Sensibilidade</text>
-<text x="630" y="376" font-size="10" fill="#fff">Especificidade · Precisão · Acurácia</text>
-<text x="630" y="392" font-size="10" fill="#fff">Matriz de confusão · Curva ROC</text>
-<text x="630" y="408" font-size="10" fill="#fff">Melhor: Random Forest · AUROC 0.951</text>
+<rect x="40" y="340" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<text x="50" y="360" font-size="11" font-weight="bold" fill="#40005F">5. MODELAGEM</text>
+<text x="50" y="380" font-size="10" fill="#1A1226">Regressão Logística · KNN</text>
+<text x="50" y="396" font-size="10" fill="#1A1226">Árvore de Decisão · Random Forest</text>
+<text x="50" y="412" font-size="10" fill="#1A1226">SVM (RBF) · Gradient Boosting</text>
+<text x="50" y="428" font-size="10" fill="#1A1226">Pipeline sklearn (pré + modelo)</text>
+<rect x="330" y="340" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<text x="340" y="360" font-size="11" font-weight="bold" fill="#40005F">6. OTIMIZAÇÃO</text>
+<text x="340" y="380" font-size="10" fill="#1A1226">GridSearchCV</text>
+<text x="340" y="396" font-size="10" fill="#1A1226">StratifiedKFold (k=5)</text>
+<text x="340" y="412" font-size="10" fill="#1A1226">Métrica: AUROC</text>
+<text x="340" y="428" font-size="10" fill="#1A1226">157 combinações testadas</text>
+<rect x="620" y="340" rx="14" width="250" height="175" fill="#40005F" stroke="#8B3DB8" stroke-width="2"/>
+<text x="630" y="360" font-size="11" font-weight="bold" fill="#B57BDB">7. AVALIAÇÃO</text>
+<text x="630" y="380" font-size="10" fill="#fff">AUROC · F1 · Sensibilidade</text>
+<text x="630" y="396" font-size="10" fill="#fff">Especificidade · Precisão · Acurácia</text>
+<text x="630" y="412" font-size="10" fill="#fff">Matriz de confusão · Curva ROC</text>
+<text x="630" y="428" font-size="10" fill="#fff">Melhor (pela CV): Random Forest</text>
+<text x="630" y="444" font-size="10" fill="#fff">AUROC CV 0,977 · teste 0,951</text>
 <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#65148C"/></marker></defs>
-<line x1="290" y1="155.0" x2="328" y2="155.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="580" y1="155.0" x2="618" y2="155.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="870" y1="155.0" x2="908" y2="155.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<path d="M1035.0,230 L1035.0,275 L165.0,275 L165.0,318" fill="none" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="290" y1="395.0" x2="328" y2="395.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="580" y1="395.0" x2="618" y2="395.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<text x="40" y="545" font-size="10" fill="#4A3D5C">Equipe: Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi — WYD6399 · UniFavip Wyden · 2026</text></svg></div></div>
-    <div class="part"><div class="kicker">Parte B</div><h2 id="documentacao" style="border:0;margin-top:.3rem">Documentação do projeto</h2><p><strong>Disciplina:</strong> WYD6399 · Tópicos em Big Data em Python · UniFavip Wyden
-<strong>Professor:</strong> Me. Flávio Morais
+<line x1="290" y1="167.5" x2="328" y2="167.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="580" y1="167.5" x2="618" y2="167.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="870" y1="167.5" x2="908" y2="167.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<path d="M1035.0,255 L1035.0,295 L165.0,295 L165.0,338" fill="none" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="290" y1="427.5" x2="328" y2="427.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="580" y1="427.5" x2="618" y2="427.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<text x="40" y="560" font-size="10" fill="#4A3D5C">Equipe: Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi — WYD6399 · UniFavip Wyden · 2026</text></svg></div></div>
+    <div class="part"><div class="kicker">Parte B</div><h2 id="documentacao" style="border:0;margin-top:.3rem">Documentação do projeto</h2><p><strong>Disciplina:</strong> WYD6399 · Tópicos Avançados em Big Data com Python · UniFavip Wyden
+<strong>Professor:</strong> Melquezedeque Lima
 <strong>Equipe:</strong> Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi
-<strong>Data:</strong> 14/11/2026 · Apresentação: 30/11/2026</p>
+<strong>Data:</strong> 23/11/2026 · Apresentação: 30/11/2026</p>
 <hr />
 <h2 id="doc-1-introducao">1. Introdução</h2>
 <h3 id="doc-11-contexto-e-relevancia">1.1 Contexto e relevância</h3>
@@ -326,7 +328,7 @@ pip install -r requirements.txt
 <td>1246,00</td>
 <td>55601,00</td>
 <td>5,31</td>
-<td>26 (10.88%)</td>
+<td>26 (10,88%)</td>
 </tr>
 <tr>
 <td>media_permanencia</td>
@@ -336,7 +338,7 @@ pip install -r requirements.txt
 <td>4,30</td>
 <td>16,00</td>
 <td>1,06</td>
-<td>7 (2.93%)</td>
+<td>7 (2,93%)</td>
 </tr>
 <tr>
 <td>media_perm_macro</td>
@@ -346,7 +348,7 @@ pip install -r requirements.txt
 <td>4,58</td>
 <td>6,50</td>
 <td>0,26</td>
-<td>0 (0.0%)</td>
+<td>0 (0,0%)</td>
 </tr>
 <tr>
 <td>tx_mort_macro</td>
@@ -356,7 +358,7 @@ pip install -r requirements.txt
 <td>1,77</td>
 <td>15,62</td>
 <td>1,56</td>
-<td>20 (8.37%)</td>
+<td>20 (8,37%)</td>
 </tr>
 <tr>
 <td>tx_mort_melhor_hosp</td>
@@ -366,7 +368,7 @@ pip install -r requirements.txt
 <td>2,41</td>
 <td>15,22</td>
 <td>1,20</td>
-<td>0 (0.0%)</td>
+<td>0 (0,0%)</td>
 </tr>
 <tr>
 <td>tx_mortalidade</td>
@@ -376,7 +378,7 @@ pip install -r requirements.txt
 <td>0,90</td>
 <td>40,49</td>
 <td>3,66</td>
-<td>25 (10.46%)</td>
+<td>25 (10,46%)</td>
 </tr>
 </tbody>
 </table>
@@ -458,6 +460,7 @@ pip install -r requirements.txt
 </table>
 <p>Decisões adicionais: <code>melhor_hospital</code> foi descartada antes da análise (texto livre com um único valor por capítulo CID, redundante com <code>doenca_cid</code>); <code>tx_mortalidade</code> foi excluída por ser a origem do alvo (vazamento). <code>media_perm_macro</code> foi descartada por colinearidade com <code>tx_mort_macro</code> (ρ = 0,92); ambas derivam da faixa etária. <code>doenca_cod</code> e <code>log_internacoes</code> passaram em apenas um critério.</p>
 <p><strong>Variáveis finais:</strong> <code>tx_mort_melhor_hosp</code>, <code>media_permanencia</code>, <code>tx_mort_macro</code>, <code>faixa_etaria_ord</code>.</p>
+<p><strong>Variáveis de contexto e risco de vazamento:</strong> <code>tx_mort_macro</code> e <code>tx_mort_melhor_hosp</code> vêm da mesma fonte de mortalidade que origina o alvo, mas em outro nível de agregação. A primeira é a taxa estadual da faixa etária, somando todas as doenças. A segunda é a taxa do hospital de maior volume no capítulo CID, somando todas as idades. Nenhuma delas é a taxa do próprio grupo (<code>tx_mortalidade</code>), que ficou fora do modelo. Elas representam informação que o gestor já tem antes de avaliar um grupo: o risco típico daquela idade e o desempenho do hospital de referência daquela doença. Como foram calculadas no mesmo período do alvo, essa limitação é discutida e testada na seção 3.3.</p>
 <h3 id="doc-24-pre-processamento-srcpreprocessamentopy">2.4 Pré-processamento (<code>src/preprocessamento.py</code>)</h3>
 <table>
 <thead>
@@ -485,13 +488,13 @@ pip install -r requirements.txt
 </tr>
 <tr>
 <td>Transformação</td>
-<td><code>log1p(internacoes)</code></td>
-<td>Cauda longa; reduz o peso dos extremos</td>
+<td><code>log1p(internacoes)</code>, gerando a candidata <code>log_internacoes</code></td>
+<td>Cauda longa; reduz o peso dos extremos. A variável foi avaliada na seleção e descartada (1/3 critérios)</td>
 </tr>
 <tr>
 <td>Codificação</td>
-<td>Faixa etária ordinal (0 a 11); capítulo CID one-hot</td>
-<td>Idade tem ordem natural; doença é nominal</td>
+<td>Faixa etária ordinal (0 a 11); capítulo CID codificado (<code>doenca_cod</code>) para a etapa de seleção</td>
+<td>Idade tem ordem natural. O capítulo CID foi descartado na seleção (1/3 critérios); a doença entra no modelo de forma indireta, pela <code>tx_mort_melhor_hosp</code></td>
 </tr>
 <tr>
 <td>Padronização</td>
@@ -694,7 +697,7 @@ pip install -r requirements.txt
 <h3 id="doc-32-discussao">3.2 Discussão</h3>
 <ul>
 <li>O <strong>Random Forest</strong> foi o modelo escolhido, com AUROC de 0,977 ± 0,02 na validação cruzada e 0,951 no teste. Classificou corretamente 90,0% dos grupos, com sensibilidade de 90,0% e especificidade de 90,0%: erra pouco nos dois sentidos.</li>
-<li>Os modelos de conjunto (Random Forest e Gradient Boosting) e o SVM ficaram próximos entre si e acima dos modelos mais simples. A Árvore de Decisão isolada teve o pior desempenho (0,883 de AUROC), o que confirma o ganho de variância dos métodos de ensemble.</li>
+<li>Os modelos de conjunto (Random Forest e Gradient Boosting) e o SVM ficaram próximos entre si e acima dos modelos mais simples. A Árvore de Decisão isolada teve o pior desempenho (0,883 de AUROC), o que confirma a redução de variância obtida pelos métodos de ensemble.</li>
 <li>A Regressão Logística, mesmo sendo linear, alcançou AUROC de 0,888: a relação entre as variáveis e o alvo é em boa parte monotônica.</li>
 <li>AUROC de validação cruzada e de teste ficaram próximas em todos os modelos: não há sinal de sobreajuste relevante.</li>
 <li><strong>Importância das variáveis no Random Forest</strong> (queda de AUROC ao permutar): <code>tx_mort_melhor_hosp</code> 0,196; <code>media_permanencia</code> 0,076; <code>tx_mort_macro</code> 0,035; <code>faixa_etaria_ord</code> 0,013. A taxa de mortalidade do hospital de referência da doença é o fator mais informativo, seguida do tempo médio de permanência do próprio grupo.</li>
@@ -703,8 +706,56 @@ pip install -r requirements.txt
 <ul>
 <li>A base tem 239 grupos; o conjunto de teste tem 60. Cada erro a mais muda a acurácia em cerca de 1,7 pontos percentuais, então as diferenças entre os três melhores modelos não são estatisticamente conclusivas.</li>
 <li>O alvo é um corte estatístico (mediana) sobre grupos agregados, não um desfecho clínico individual. O modelo classifica grupos, não pacientes, e serve como apoio à gestão.</li>
-<li>As variáveis de contexto (<code>tx_mort_macro</code>, <code>tx_mort_melhor_hosp</code>) são agregações do próprio período; em produção precisariam ser recalculadas periodicamente.</li>
+<li>As variáveis de contexto (<code>tx_mort_macro</code>, <code>tx_mort_melhor_hosp</code>) são agregações do mesmo período e da mesma fonte que originam o alvo. Mesmo estando em outro nível de agregação, carregam parte da informação de mortalidade do grupo. Para medir esse efeito, treinamos uma versão do modelo sem elas (tabela abaixo). Uma validação ainda mais rigorosa seria calculá-las com dados de um período anterior ao do alvo. Em produção, precisariam ser recalculadas periodicamente.</li>
 </ul>
+<p><strong>Teste de sensibilidade (ablação).</strong> Para medir quanto o desempenho depende das variáveis de contexto, os modelos foram treinados de novo, com o mesmo split, a mesma validação e Grid Search, em quatro cenários (<code>src/ablacao.py</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Cenário</th>
+<th>Variáveis</th>
+<th>RF AUROC CV</th>
+<th>RF AUROC teste</th>
+<th>GB AUROC CV</th>
+<th>GB AUROC teste</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completo</td>
+<td>as 4 selecionadas</td>
+<td>0,976</td>
+<td>0,953</td>
+<td>0,967</td>
+<td>0,955</td>
+</tr>
+<tr>
+<td>Sem tx_mort_melhor_hosp</td>
+<td>permanência, idade, tx_mort_macro</td>
+<td>0,906</td>
+<td>0,818</td>
+<td>0,896</td>
+<td>0,849</td>
+</tr>
+<tr>
+<td>Sem as duas de contexto</td>
+<td>permanência, idade</td>
+<td>0,909</td>
+<td>0,843</td>
+<td>0,888</td>
+<td>0,846</td>
+</tr>
+<tr>
+<td><strong>Sem contexto + capítulo CID (one-hot)</strong></td>
+<td><strong>permanência, idade, doença</strong></td>
+<td><strong>0,956</strong></td>
+<td><strong>0,943</strong></td>
+<td><strong>0,950</strong></td>
+<td><strong>0,939</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Leitura: retirar as variáveis de contexto derruba o desempenho só quando a informação da doença some junto. Com o capítulo CID codificado diretamente, sem nenhuma taxa de mortalidade como entrada, o Random Forest volta a AUROC de 0,956 na validação cruzada e 0,943 no teste. Ou seja, <code>tx_mort_melhor_hosp</code> funciona como um resumo da doença (um valor por capítulo), e o poder preditivo vem da combinação doença × idade × permanência, não de vazamento do alvo.</p>
 <h3 id="doc-34-interface">3.4 Interface</h3>
 <p>A interface (<code>frontend/index.html</code>) é um único arquivo HTML, organizado nas quatro partes pedidas: (1) problema, contexto, objetivo, base e variável-alvo; (2) metodologia com fluxo visual, tabela de seleção e justificativas de pré-processamento; (3) análise gráfica interativa de cada variável contra o alvo; (4) resultados dos modelos com tabela comparativa, métricas, curvas ROC, matrizes de confusão, importâncias e hiperparâmetros. Inclui ainda um simulador que consulta a API Flask (<code>api.py</code>) para classificar novos grupos.</p>
 <hr />
@@ -721,5 +772,5 @@ pip install -r requirements.txt
 <p>TUKEY, J. W. <strong>Exploratory Data Analysis</strong>. Reading: Addison-Wesley, 1977.</p></div>
   </main>
 </div>
-<footer><div class="wrap">TSPE v2 · Disciplina WYD6399 · Prof. Me. Flávio Morais · UniFavip Wyden · Caruaru, PE · 2026</div></footer>
+<footer><div class="wrap">TSPE v2 · Disciplina WYD6399 · Prof. Melquezedeque Lima · UniFavip Wyden · Caruaru, PE · 2026</div></footer>
 </body></html>

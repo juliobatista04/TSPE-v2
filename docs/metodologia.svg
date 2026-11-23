@@ -1,20 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="560" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="575" font-family="Helvetica, Arial, sans-serif">
 <rect width="100%" height="100%" fill="#F6F6F6"/>
 <text x="40" y="38" font-size="20" font-weight="bold" fill="#40005F">METODOLOGIA · TSPE</text>
 <text x="40" y="58" font-size="12" fill="#4A3D5C">Classificação de risco de mortalidade hospitalar em Pernambuco (SIH/SUS)</text>
-<rect x="40" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<rect x="40" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="50" y="100" font-size="11" font-weight="bold" fill="#40005F">1. BASE DE DADOS</text>
 <text x="50" y="120" font-size="10" fill="#1A1226">SIH/SUS · TABNET (DATASUS)</text>
 <text x="50" y="136" font-size="10" fill="#1A1226">Pernambuco · 12 CSVs brutos</text>
 <text x="50" y="152" font-size="10" fill="#1A1226">239 registros × 10 atributos</text>
-<text x="50" y="168" font-size="10" fill="#1A1226">Alvo: alto_risco (tx. mortalidade &gt; mediana</text>
-<rect x="330" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<text x="50" y="168" font-size="10" fill="#1A1226">Alvo: alto_risco</text>
+<text x="50" y="184" font-size="10" fill="#1A1226">(tx. mortalidade &gt; mediana 0,90%)</text>
+<rect x="330" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="340" y="100" font-size="11" font-weight="bold" fill="#40005F">2. ANÁLISE DOS DADOS</text>
 <text x="340" y="120" font-size="10" fill="#1A1226">Ausentes (&#x27;-&#x27; = zero óbitos)</text>
 <text x="340" y="136" font-size="10" fill="#1A1226">Duplicados · Outliers 1,5×IQR</text>
 <text x="340" y="152" font-size="10" fill="#1A1226">Assimetria · Spearman</text>
 <text x="340" y="168" font-size="10" fill="#1A1226">Gráfico de cada variável × alvo</text>
-<rect x="620" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<rect x="620" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="630" y="100" font-size="11" font-weight="bold" fill="#40005F">3. SELEÇÃO DE VARIÁVEIS</text>
 <text x="630" y="120" font-size="10" fill="#1A1226">Informação mútua</text>
 <text x="630" y="136" font-size="10" fill="#1A1226">|ρ| Spearman com o alvo</text>
@@ -23,36 +24,37 @@
 <text x="630" y="184" font-size="10" fill="#1A1226">Selecionadas:</text>
 <text x="630" y="200" font-size="10" fill="#1A1226">tx_mort_melhor_hosp, media_permanencia</text>
 <text x="630" y="216" font-size="10" fill="#1A1226">tx_mort_macro, faixa_etaria_ord</text>
-<rect x="910" y="80" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<rect x="910" y="80" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
 <text x="920" y="100" font-size="11" font-weight="bold" fill="#40005F">4. PRÉ-PROCESSAMENTO</text>
 <text x="920" y="120" font-size="10" fill="#1A1226">Limpeza TABNET · imputação (0 / mediana)</text>
 <text x="920" y="136" font-size="10" fill="#1A1226">Outliers mantidos (grupos reais)</text>
-<text x="920" y="152" font-size="10" fill="#1A1226">log1p(internações) · ordinal(idade)</text>
-<text x="920" y="168" font-size="10" fill="#1A1226">One-hot(doença) · StandardScaler</text>
+<text x="920" y="152" font-size="10" fill="#1A1226">ordinal(idade) · log1p(internações)</text>
+<text x="920" y="168" font-size="10" fill="#1A1226">StandardScaler dentro do Pipeline</text>
 <text x="920" y="184" font-size="10" fill="#1A1226">Classes 50/50 · split 75/25 estratificado</text>
-<rect x="40" y="320" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
-<text x="50" y="340" font-size="11" font-weight="bold" fill="#40005F">5. MODELAGEM</text>
-<text x="50" y="360" font-size="10" fill="#1A1226">Regressão Logística · KNN</text>
-<text x="50" y="376" font-size="10" fill="#1A1226">Árvore de Decisão · Random Forest</text>
-<text x="50" y="392" font-size="10" fill="#1A1226">SVM (RBF) · Gradient Boosting</text>
-<text x="50" y="408" font-size="10" fill="#1A1226">Pipeline sklearn (pré + modelo)</text>
-<rect x="330" y="320" rx="14" width="250" height="150" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
-<text x="340" y="340" font-size="11" font-weight="bold" fill="#40005F">6. OTIMIZAÇÃO</text>
-<text x="340" y="360" font-size="10" fill="#1A1226">GridSearchCV</text>
-<text x="340" y="376" font-size="10" fill="#1A1226">StratifiedKFold (k=5)</text>
-<text x="340" y="392" font-size="10" fill="#1A1226">Métrica: AUROC</text>
-<text x="340" y="408" font-size="10" fill="#1A1226">157 combinações testadas</text>
-<rect x="620" y="320" rx="14" width="250" height="150" fill="#40005F" stroke="#8B3DB8" stroke-width="2"/>
-<text x="630" y="340" font-size="11" font-weight="bold" fill="#B57BDB">7. AVALIAÇÃO</text>
-<text x="630" y="360" font-size="10" fill="#fff">AUROC · F1 · Sensibilidade</text>
-<text x="630" y="376" font-size="10" fill="#fff">Especificidade · Precisão · Acurácia</text>
-<text x="630" y="392" font-size="10" fill="#fff">Matriz de confusão · Curva ROC</text>
-<text x="630" y="408" font-size="10" fill="#fff">Melhor: Random Forest · AUROC 0.951</text>
+<rect x="40" y="340" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<text x="50" y="360" font-size="11" font-weight="bold" fill="#40005F">5. MODELAGEM</text>
+<text x="50" y="380" font-size="10" fill="#1A1226">Regressão Logística · KNN</text>
+<text x="50" y="396" font-size="10" fill="#1A1226">Árvore de Decisão · Random Forest</text>
+<text x="50" y="412" font-size="10" fill="#1A1226">SVM (RBF) · Gradient Boosting</text>
+<text x="50" y="428" font-size="10" fill="#1A1226">Pipeline sklearn (pré + modelo)</text>
+<rect x="330" y="340" rx="14" width="250" height="175" fill="#fff" stroke="#8B3DB8" stroke-width="2"/>
+<text x="340" y="360" font-size="11" font-weight="bold" fill="#40005F">6. OTIMIZAÇÃO</text>
+<text x="340" y="380" font-size="10" fill="#1A1226">GridSearchCV</text>
+<text x="340" y="396" font-size="10" fill="#1A1226">StratifiedKFold (k=5)</text>
+<text x="340" y="412" font-size="10" fill="#1A1226">Métrica: AUROC</text>
+<text x="340" y="428" font-size="10" fill="#1A1226">157 combinações testadas</text>
+<rect x="620" y="340" rx="14" width="250" height="175" fill="#40005F" stroke="#8B3DB8" stroke-width="2"/>
+<text x="630" y="360" font-size="11" font-weight="bold" fill="#B57BDB">7. AVALIAÇÃO</text>
+<text x="630" y="380" font-size="10" fill="#fff">AUROC · F1 · Sensibilidade</text>
+<text x="630" y="396" font-size="10" fill="#fff">Especificidade · Precisão · Acurácia</text>
+<text x="630" y="412" font-size="10" fill="#fff">Matriz de confusão · Curva ROC</text>
+<text x="630" y="428" font-size="10" fill="#fff">Melhor (pela CV): Random Forest</text>
+<text x="630" y="444" font-size="10" fill="#fff">AUROC CV 0,977 · teste 0,951</text>
 <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#65148C"/></marker></defs>
-<line x1="290" y1="155.0" x2="328" y2="155.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="580" y1="155.0" x2="618" y2="155.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="870" y1="155.0" x2="908" y2="155.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<path d="M1035.0,230 L1035.0,275 L165.0,275 L165.0,318" fill="none" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="290" y1="395.0" x2="328" y2="395.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<line x1="580" y1="395.0" x2="618" y2="395.0" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
-<text x="40" y="545" font-size="10" fill="#4A3D5C">Equipe: Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi — WYD6399 · UniFavip Wyden · 2026</text></svg>
+<line x1="290" y1="167.5" x2="328" y2="167.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="580" y1="167.5" x2="618" y2="167.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="870" y1="167.5" x2="908" y2="167.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<path d="M1035.0,255 L1035.0,295 L165.0,295 L165.0,338" fill="none" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="290" y1="427.5" x2="328" y2="427.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<line x1="580" y1="427.5" x2="618" y2="427.5" stroke="#65148C" stroke-width="2" marker-end="url(#a)"/>
+<text x="40" y="560" font-size="10" fill="#4A3D5C">Equipe: Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi — WYD6399 · UniFavip Wyden · 2026</text></svg>

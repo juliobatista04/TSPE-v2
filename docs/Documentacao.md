@@ -1,9 +1,9 @@
 # Classificação de risco de mortalidade hospitalar em Pernambuco com Machine Learning
 
-**Disciplina:** WYD6399 · Tópicos em Big Data em Python · UniFavip Wyden
-**Professor:** Me. Flávio Morais
+**Disciplina:** WYD6399 · Tópicos Avançados em Big Data com Python · UniFavip Wyden
+**Professor:** Melquezedeque Lima
 **Equipe:** Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi
-**Data:** 14/11/2026 · Apresentação: 30/11/2026
+**Data:** 23/11/2026 · Apresentação: 30/11/2026
 
 ---
 
@@ -44,12 +44,12 @@ A figura `docs/metodologia.drawio` (também em `docs/metodologia.svg`) resume as
 
 | Variável | Média | Desvio | Mín | Mediana | Máx | Assimetria | Outliers (1,5×IQR) |
 |---|---|---|---|---|---|---|---|
-| internacoes | 3017,00 | 5281,32 | 1,00 | 1246,00 | 55601,00 | 5,31 | 26 (10.88%) |
-| media_permanencia | 4,84 | 2,82 | 0,10 | 4,30 | 16,00 | 1,06 | 7 (2.93%) |
-| media_perm_macro | 4,46 | 1,16 | 3,05 | 4,58 | 6,50 | 0,26 | 0 (0.0%) |
-| tx_mort_macro | 3,67 | 4,59 | 0,47 | 1,77 | 15,62 | 1,56 | 20 (8.37%) |
-| tx_mort_melhor_hosp | 3,63 | 4,15 | 0,00 | 2,41 | 15,22 | 1,20 | 0 (0.0%) |
-| tx_mortalidade | 2,93 | 5,41 | 0,00 | 0,90 | 40,49 | 3,66 | 25 (10.46%) |
+| internacoes | 3017,00 | 5281,32 | 1,00 | 1246,00 | 55601,00 | 5,31 | 26 (10,88%) |
+| media_permanencia | 4,84 | 2,82 | 0,10 | 4,30 | 16,00 | 1,06 | 7 (2,93%) |
+| media_perm_macro | 4,46 | 1,16 | 3,05 | 4,58 | 6,50 | 0,26 | 0 (0,0%) |
+| tx_mort_macro | 3,67 | 4,59 | 0,47 | 1,77 | 15,62 | 1,56 | 20 (8,37%) |
+| tx_mort_melhor_hosp | 3,63 | 4,15 | 0,00 | 2,41 | 15,22 | 1,20 | 0 (0,0%) |
+| tx_mortalidade | 2,93 | 5,41 | 0,00 | 0,90 | 40,49 | 3,66 | 25 (10,46%) |
 
 - **Decisão sobre outliers:** mantidos. Os valores extremos (ex.: 55601 internações em um único grupo; mortalidade de 40,5%) são grupos reais e representam exatamente o fenômeno que se quer classificar. Removê-los esvaziaria a classe de alto risco. A assimetria de `internacoes` foi tratada com transformação logarítmica.
 - **Relação com o alvo:** a proporção de alto risco cresce com a idade (de 10,5% na faixa de menor risco a 85,0% na de maior risco), com um pico também em menores de 1 ano. Por capítulo CID, o alto risco concentra-se em algumas doenças infecciosas e parasitárias, doenças do aparelho circulatório e neoplasias (tumores) (100,0%, 100,0% e 91,7%). Os gráficos de cada variável contra o alvo estão em `resultados/graficos/eda_*.png` e na Parte 3 da interface.
@@ -71,14 +71,16 @@ Decisões adicionais: `melhor_hospital` foi descartada antes da análise (texto 
 
 **Variáveis finais:** `tx_mort_melhor_hosp`, `media_permanencia`, `tx_mort_macro`, `faixa_etaria_ord`.
 
+**Variáveis de contexto e risco de vazamento:** `tx_mort_macro` e `tx_mort_melhor_hosp` vêm da mesma fonte de mortalidade que origina o alvo, mas em outro nível de agregação. A primeira é a taxa estadual da faixa etária, somando todas as doenças. A segunda é a taxa do hospital de maior volume no capítulo CID, somando todas as idades. Nenhuma delas é a taxa do próprio grupo (`tx_mortalidade`), que ficou fora do modelo. Elas representam informação que o gestor já tem antes de avaliar um grupo: o risco típico daquela idade e o desempenho do hospital de referência daquela doença. Como foram calculadas no mesmo período do alvo, essa limitação é discutida e testada na seção 3.3.
+
 ### 2.4 Pré-processamento (`src/preprocessamento.py`)
 | Procedimento | O que foi feito | Justificativa |
 |---|---|---|
 | Limpeza | Remoção de cabeçalho/rodapé, totais e prefixos | Artefatos de exportação do TABNET |
 | Ausentes | 0 para mortalidade (zero óbitos); mediana para contexto | Semântica do TABNET; mediana é robusta a outliers |
 | Outliers | Mantidos | São os grupos de alto risco reais |
-| Transformação | `log1p(internacoes)` | Cauda longa; reduz o peso dos extremos |
-| Codificação | Faixa etária ordinal (0 a 11); capítulo CID one-hot | Idade tem ordem natural; doença é nominal |
+| Transformação | `log1p(internacoes)`, gerando a candidata `log_internacoes` | Cauda longa; reduz o peso dos extremos. A variável foi avaliada na seleção e descartada (1/3 critérios) |
+| Codificação | Faixa etária ordinal (0 a 11); capítulo CID codificado (`doenca_cod`) para a etapa de seleção | Idade tem ordem natural. O capítulo CID foi descartado na seleção (1/3 critérios); a doença entra no modelo de forma indireta, pela `tx_mort_melhor_hosp` |
 | Padronização | `StandardScaler` dentro do Pipeline | KNN, SVM e Regressão Logística dependem de escala; ajustado só no treino de cada fold |
 | Balanceamento | Não necessário (alvo pela mediana); `class_weight="balanced"` onde disponível | Classes 120 × 119 |
 | Divisão | 75% treino (179) / 25% teste (60), estratificada, semente 42 | Teste nunca é usado para escolher nada |
@@ -128,7 +130,7 @@ No conjunto de teste (60 registros, nunca vistos), cada modelo foi avaliado com 
 
 ### 3.2 Discussão
 - O **Random Forest** foi o modelo escolhido, com AUROC de 0,977 ± 0,02 na validação cruzada e 0,951 no teste. Classificou corretamente 90,0% dos grupos, com sensibilidade de 90,0% e especificidade de 90,0%: erra pouco nos dois sentidos.
-- Os modelos de conjunto (Random Forest e Gradient Boosting) e o SVM ficaram próximos entre si e acima dos modelos mais simples. A Árvore de Decisão isolada teve o pior desempenho (0,883 de AUROC), o que confirma o ganho de variância dos métodos de ensemble.
+- Os modelos de conjunto (Random Forest e Gradient Boosting) e o SVM ficaram próximos entre si e acima dos modelos mais simples. A Árvore de Decisão isolada teve o pior desempenho (0,883 de AUROC), o que confirma a redução de variância obtida pelos métodos de ensemble.
 - A Regressão Logística, mesmo sendo linear, alcançou AUROC de 0,888: a relação entre as variáveis e o alvo é em boa parte monotônica.
 - AUROC de validação cruzada e de teste ficaram próximas em todos os modelos: não há sinal de sobreajuste relevante.
 - **Importância das variáveis no Random Forest** (queda de AUROC ao permutar): `tx_mort_melhor_hosp` 0,196; `media_permanencia` 0,076; `tx_mort_macro` 0,035; `faixa_etaria_ord` 0,013. A taxa de mortalidade do hospital de referência da doença é o fator mais informativo, seguida do tempo médio de permanência do próprio grupo.
@@ -136,7 +138,19 @@ No conjunto de teste (60 registros, nunca vistos), cada modelo foi avaliado com 
 ### 3.3 Limitações
 - A base tem 239 grupos; o conjunto de teste tem 60. Cada erro a mais muda a acurácia em cerca de 1,7 pontos percentuais, então as diferenças entre os três melhores modelos não são estatisticamente conclusivas.
 - O alvo é um corte estatístico (mediana) sobre grupos agregados, não um desfecho clínico individual. O modelo classifica grupos, não pacientes, e serve como apoio à gestão.
-- As variáveis de contexto (`tx_mort_macro`, `tx_mort_melhor_hosp`) são agregações do próprio período; em produção precisariam ser recalculadas periodicamente.
+- As variáveis de contexto (`tx_mort_macro`, `tx_mort_melhor_hosp`) são agregações do mesmo período e da mesma fonte que originam o alvo. Mesmo estando em outro nível de agregação, carregam parte da informação de mortalidade do grupo. Para medir esse efeito, treinamos uma versão do modelo sem elas (tabela abaixo). Uma validação ainda mais rigorosa seria calculá-las com dados de um período anterior ao do alvo. Em produção, precisariam ser recalculadas periodicamente.
+
+**Teste de sensibilidade (ablação).** Para medir quanto o desempenho depende das variáveis de contexto, os modelos foram treinados de novo, com o mesmo split, a mesma validação e Grid Search, em quatro cenários (`src/ablacao.py`):
+
+| Cenário | Variáveis | RF AUROC CV | RF AUROC teste | GB AUROC CV | GB AUROC teste |
+|---|---|---|---|---|---|
+| Completo | as 4 selecionadas | 0,976 | 0,953 | 0,967 | 0,955 |
+| Sem tx_mort_melhor_hosp | permanência, idade, tx_mort_macro | 0,906 | 0,818 | 0,896 | 0,849 |
+| Sem as duas de contexto | permanência, idade | 0,909 | 0,843 | 0,888 | 0,846 |
+| **Sem contexto + capítulo CID (one-hot)** | **permanência, idade, doença** | **0,956** | **0,943** | **0,950** | **0,939** |
+
+Leitura: retirar as variáveis de contexto derruba o desempenho só quando a informação da doença some junto. Com o capítulo CID codificado diretamente, sem nenhuma taxa de mortalidade como entrada, o Random Forest volta a AUROC de 0,956 na validação cruzada e 0,943 no teste. Ou seja, `tx_mort_melhor_hosp` funciona como um resumo da doença (um valor por capítulo), e o poder preditivo vem da combinação doença × idade × permanência, não de vazamento do alvo.
+
 
 ### 3.4 Interface
 A interface (`frontend/index.html`) é um único arquivo HTML, organizado nas quatro partes pedidas: (1) problema, contexto, objetivo, base e variável-alvo; (2) metodologia com fluxo visual, tabela de seleção e justificativas de pré-processamento; (3) análise gráfica interativa de cada variável contra o alvo; (4) resultados dos modelos com tabela comparativa, métricas, curvas ROC, matrizes de confusão, importâncias e hiperparâmetros. Inclui ainda um simulador que consulta a API Flask (`api.py`) para classificar novos grupos.

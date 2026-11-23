@@ -1,6 +1,6 @@
 # TSPE v2 · Classificação de risco de mortalidade hospitalar em Pernambuco
 
-> Projeto da disciplina WYD6399 · Tópicos em Big Data em Python · UniFavip Wyden · Prof. Me. Flávio Morais
+> Projeto da disciplina WYD6399 · Tópicos Avançados em Big Data com Python · UniFavip Wyden · Prof. Melquezedeque Lima
 > Equipe: Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi
 
 Um classificador de Machine Learning treinado com dados públicos do SIH/SUS (DATASUS, TABNET) que responde, para cada combinação de capítulo CID-10 e faixa etária, se a **taxa de mortalidade hospitalar** do grupo fica **acima (Alto risco)** ou **abaixo (Baixo risco)** da mediana do estado.

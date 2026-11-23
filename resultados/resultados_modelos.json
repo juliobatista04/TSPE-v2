@@ -45,7 +45,7 @@
      "tp": 25
     }
    },
-   "tempo_s": 1.5,
+   "tempo_s": 1.2,
    "justificativa": "Modelo linear de referência, interpretável (coeficientes). C controla a regularização."
   },
   "KNN": {
@@ -101,7 +101,7 @@
      "tp": 26
     }
    },
-   "tempo_s": 1.2,
+   "tempo_s": 1.0,
    "justificativa": "Regras legíveis para o público. max_depth e min_samples_leaf limitam o sobreajuste em base pequena."
   },
   "Random Forest": {
@@ -130,7 +130,7 @@
      "tp": 27
     }
    },
-   "tempo_s": 55.9,
+   "tempo_s": 51.4,
    "justificativa": "Conjunto de árvores: reduz variância da árvore única e lida bem com interações não lineares."
   },
   "SVM (RBF)": {
@@ -158,7 +158,7 @@
      "tp": 28
     }
    },
-   "tempo_s": 0.8,
+   "tempo_s": 0.5,
    "justificativa": "Fronteira não linear com margem máxima; C e gamma controlam complexidade."
   },
   "Gradient Boosting": {
@@ -187,7 +187,7 @@
      "tp": 29
     }
    },
-   "tempo_s": 5.5,
+   "tempo_s": 4.2,
    "justificativa": "Boosting sequencial de árvores rasas; costuma liderar em dados tabulares."
   }
  },

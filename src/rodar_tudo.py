@@ -14,11 +14,11 @@ warnings.filterwarnings("ignore")
 SRC = Path(__file__).resolve().parent
 sys.path.insert(0, str(SRC))
 
-import tratamento, analise, selecao_variaveis, treinar, build_frontend  # noqa: E402
+import tratamento, analise, selecao_variaveis, treinar, ablacao, build_frontend  # noqa: E402
 
 t0 = time.time()
 for nome, fn in [("1/7 tratamento", tratamento.main), ("2/7 análise", analise.main),
-                 ("3/7 seleção de variáveis", selecao_variaveis.main), ("4/7 treino", treinar.main)]:
+                 ("3/7 seleção de variáveis", selecao_variaveis.main), ("4/7 treino", treinar.main), ("4b/7 ablação (sem variáveis de contexto)", ablacao.main)]:
     print(f"\n══════ {nome} ══════")
     fn()
 print("\n══════ 5/7 interface ══════")
