@@ -4,7 +4,7 @@ Disciplina WYD6399 Tópicos Avançados em Big Data com Python · UniFavip Wyden 
 
 Equipe: Julio César Batista Silva, Teves Gabriel, Luciano Filho, Jonathas Costa e Anderson Davi
 
-**Simulador:** https://juliobatista04.github.io/TSPE-v2/
+**Consulta da taxa de mortalidade (página da apresentação):** https://juliobatista04.github.io/TSPE-v2/
 **Análise completa (4 partes):** https://juliobatista04.github.io/TSPE-v2/frontend/index.html
 
 ## Resumo
@@ -82,16 +82,18 @@ Sem nenhuma taxa de mortalidade na entrada, o modelo continua com AUROC acima de
 ```bash
 pip install -r requirements.txt
 python src/rodar_tudo.py   # tratamento, análise, seleção, treino, teste de ablação, interface e documentação (cerca de 2 min)
-python api.py              # API em http://localhost:5000 (opcional: o simulador da página não precisa dela)
+python api.py              # API em http://localhost:5000 (opcional: a página de consulta não precisa dela)
 ```
 
 Sem Python instalado, use `notebooks/TSPE_v2_pipeline_colab.ipynb` no Google Colab.
 
 ## O que tem em cada pasta
 
+Explicação completa em [`guia/README.md`](guia/README.md).
+
 | Caminho | Conteúdo |
 |---|---|
-| `index.html` | página inicial: resumo, simulador e lista de materiais |
+| `index.html` | página da apresentação: consulta da taxa de mortalidade e principais doenças com tratamentos |
 | `frontend/index.html` | análise completa em 4 partes (problema, metodologia, gráficos, resultados) |
 | `src/` | um script por etapa: `tratamento.py`, `analise.py`, `selecao_variaveis.py`, `preprocessamento.py`, `treinar.py`, `ablacao.py` e geradores da interface e da documentação |
 | `data/raw/` | onde ficam os 12 CSVs exportados do TABNET (ver o README da pasta) |
