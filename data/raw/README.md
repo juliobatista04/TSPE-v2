@@ -1,4 +1,4 @@
-# data/raw — arquivos brutos do TABNET
+# data/raw: arquivos brutos do TABNET
 
 Coloque aqui os 12 CSVs exportados do TABNET (DATASUS → SIH/SUS → Morbidade Hospitalar do SUS por local de internação → Pernambuco), com exatamente estes nomes (são os mesmos do notebook original):
 

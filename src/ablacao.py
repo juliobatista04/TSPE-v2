@@ -1,5 +1,5 @@
 """
-Etapa 4b — Teste de sensibilidade (ablação) das variáveis de contexto.
+Etapa 4b: Teste de sensibilidade (ablação) das variáveis de contexto.
 
 Pergunta: tx_mort_macro e tx_mort_melhor_hosp vêm da mesma fonte de
 mortalidade que origina o alvo. O desempenho depende delas (vazamento)?

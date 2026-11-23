@@ -1,5 +1,5 @@
 """
-Etapa 4 — Modelagem, otimização e avaliação (diretrizes 9 e 10).
+Etapa 4: Modelagem, otimização e avaliação (diretrizes 9 e 10).
 
 Para cada modelo:
   - Pipeline(pré-processamento -> classificador), para que escala e one-hot

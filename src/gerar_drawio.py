@@ -61,7 +61,7 @@ for i in range(len(ETAPAS) - 1):
 titulo = ("<b><font style='font-size:18px' color='#40005F'>METODOLOGIA · TSPE</font></b><br>"
           "<font color='#4A3D5C'>Classificação de risco de mortalidade hospitalar em Pernambuco (SIH/SUS)</font>")
 cells.insert(0, f'<mxCell id="t1" value="{escape(titulo)}" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;" vertex="1" parent="1"><mxGeometry x="{X0}" y="15" width="800" height="50" as="geometry"/></mxCell>')
-rodape = "Equipe: Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi — WYD6399 · UniFavip Wyden · 2026"
+rodape = "Equipe: Julio César Batista Silva · Teves Gabriel · Luciano Filho · Jonathas Costa · Anderson Davi · WYD6399 · UniFavip Wyden · 2026"
 cells.append(f'<mxCell id="t2" value="{escape(rodape)}" style="text;html=1;align=left;fontSize=10;fontColor=#4A3D5C;fontFamily=Helvetica;" vertex="1" parent="1"><mxGeometry x="{X0}" y="{Y0 + 2*H + 85 + 30}" width="1000" height="30" as="geometry"/></mxCell>')
 
 xml = f'''<mxfile host="app.diagrams.net" agent="tspe-v2">

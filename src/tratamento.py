@@ -1,5 +1,5 @@
 """
-Etapa 1 — Tratamento dos dados brutos do TABNET (SIH/SUS).
+Etapa 1: Tratamento dos dados brutos do TABNET (SIH/SUS).
 
 Reproduz a lógica do notebook original (tratamento_dados_ML_2.ipynb),
 agora em funções reutilizáveis e com log do que foi feito em cada passo.

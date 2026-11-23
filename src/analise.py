@@ -1,5 +1,5 @@
 """
-Etapa 2 — Análise exploratória dos dados (EDA).
+Etapa 2: Análise exploratória dos dados (EDA).
 
 Responde às diretrizes 5 e 7:
   - comportamento das variáveis, dados ausentes, outliers, atributos sem valor

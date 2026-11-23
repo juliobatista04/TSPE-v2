@@ -1,5 +1,5 @@
 """
-Etapa 5 — Gera a interface final (frontend/index.html).
+Etapa 5: Gera a interface final (frontend/index.html).
 
 Pega frontend/template.html e injeta, em um único arquivo, todos os JSONs
 produzidos pelo pipeline. Resultado: a interface abre com duplo clique,

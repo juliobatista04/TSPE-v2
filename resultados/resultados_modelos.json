@@ -45,7 +45,7 @@
      "tp": 25
     }
    },
-   "tempo_s": 1.2,
+   "tempo_s": 1.5,
    "justificativa": "Modelo linear de referência, interpretável (coeficientes). C controla a regularização."
   },
   "KNN": {
@@ -73,7 +73,7 @@
      "tp": 26
     }
    },
-   "tempo_s": 0.7,
+   "tempo_s": 0.8,
    "justificativa": "Baseado em distância; depende da padronização. Testa k ímpar para evitar empate e pesos por distância."
   },
   "Árvore de Decisão": {
@@ -101,7 +101,7 @@
      "tp": 26
     }
    },
-   "tempo_s": 1.0,
+   "tempo_s": 0.9,
    "justificativa": "Regras legíveis para o público. max_depth e min_samples_leaf limitam o sobreajuste em base pequena."
   },
   "Random Forest": {
@@ -130,7 +130,7 @@
      "tp": 27
     }
    },
-   "tempo_s": 51.4,
+   "tempo_s": 50.9,
    "justificativa": "Conjunto de árvores: reduz variância da árvore única e lida bem com interações não lineares."
   },
   "SVM (RBF)": {
@@ -187,7 +187,7 @@
      "tp": 29
     }
    },
-   "tempo_s": 4.2,
+   "tempo_s": 4.7,
    "justificativa": "Boosting sequencial de árvores rasas; costuma liderar em dados tabulares."
   }
  },

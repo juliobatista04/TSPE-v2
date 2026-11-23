@@ -1,5 +1,5 @@
 """
-Etapa 3 — Seleção de variáveis (diretriz 6).
+Etapa 3: Seleção de variáveis (diretriz 6).
 
 Três critérios independentes, todos calculados só no conjunto de TREINO
 para não vazar informação do teste:
